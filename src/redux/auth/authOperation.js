@@ -1,21 +1,22 @@
-// import { authSlice } from './authSlice';
-// import { app } from '../../firebase/config';
-// const { updateUserProfile, authStateChange, authSignOut } = authSlice.actions;
-// console.log(app);
+import { authSlice } from './authSlice';
+import { auth } from '../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+const { updateUserProfile, authStateChange, authSignOut } = authSlice.actions;
+console.log(auth);
 
 // export const authSignUpUser =
 //   ({ email, password, userName }) =>
 //   async (dispatch, getState) => {
 //     try {
-//       await app.auth().createUserWithEmailAndPassword(email, password);
+//       await createUserWithEmailAndPassword(email, password);
 
-//       const user = await app.auth().currentUser;
+//       const user = await auth.currentUser;
 
 //       await user.updateProfile({
 //         displayName: userName,
 //       });
 
-//       const { displayName, uid } = await app.auth().currentUser;
+//       const { displayName, uid } = await auth.currentUser;
 
 //       const userUpdateProfile = {
 //         userName: displayName,

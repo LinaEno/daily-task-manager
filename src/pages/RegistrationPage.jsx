@@ -4,32 +4,43 @@ import { Input, Label } from 'components/Filter/Filter.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authSignUpUser } from 'redux/auth/authOperation';
-import { selectUserName } from 'redux/auth/authSelectors';
-import * as firebase from 'firebase';
+import { selectUserName } from '../redux/auth/authSelectors';
+import { useAuth } from 'components/context/UserAuthContext';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
-const initialState = {
-  email: '',
-  password: '',
-  userName: '',
-};
-
-export default function RegistrationPage() {
-  const dispatch = useDispatch();
+export function RegistrationPage() {
+  const { error, SignUp, currentUser } = useAuth();
   const navigate = useNavigate();
-  const user = useSelector(selectUserName);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [state, setState] = useState(initialState);
+  console.log(email);
+  console.log(password);
 
-  useEffect(() => {
-    if (user !== null) navigate('/');
-  }, [user, navigate]);
+  const [userName, setUserName] = useState('');
+
+  // useEffect(() => {
+  //   if (user !== null) navigate('/');
+  // }, [user, navigate]);
+
+  const handleCreateAccount = e => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password, userName)
+      .then(userCredential => {
+        console.log(userCredential);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(authSignUpUser(state));
-    dispatch(firebase.createUserWithEmailAndPassword(state));
-    setState(initialState);
+    SignUp(email, password, userName);
+    // {
+    //   currentUser && setState(initialState);
+    // }
   };
 
   return (
@@ -42,9 +53,7 @@ export default function RegistrationPage() {
           <Input
             type="text"
             name="userName"
-            onChange={value =>
-              setState(prevState => ({ ...prevState, userName: value }))
-            }
+            onChange={e => setUserName(e.target.value)}
           />
         </Label>
 
@@ -53,9 +62,7 @@ export default function RegistrationPage() {
           <Input
             type="email"
             name="email"
-            onChange={value =>
-              setState(prevState => ({ ...prevState, email: value }))
-            }
+            onChange={e => setEmail(e.target.value)}
           />
         </Label>
 
@@ -64,9 +71,7 @@ export default function RegistrationPage() {
           <Input
             type="password"
             name="password"
-            onChange={value =>
-              setState(prevState => ({ ...prevState, password: value }))
-            }
+            onChange={e => setPassword(e.target.value)}
           />
         </Label>
 

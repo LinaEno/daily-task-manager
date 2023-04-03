@@ -4,7 +4,7 @@ import { Input, Label } from 'components/Filter/Filter.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authSignInUser, logIn } from 'redux/auth/authOperation';
+// import { authSignInUser, logIn } from 'redux/auth/authOperation';
 import { getUserName, selectUserName } from 'redux/auth/authSelectors';
 
 export default function LoginPage() {
@@ -29,17 +29,17 @@ export default function LoginPage() {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authSignInUser({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   dispatch(authSignInUser({ email, password }));
+  //   setEmail('');
+  //   setPassword('');
+  // };
 
   return (
     <Container>
       <Title>Log in</Title>
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={() => {}} autoComplete="off">
         <Label>
           E-mail
           <Input

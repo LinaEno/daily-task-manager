@@ -12,50 +12,26 @@ import {
   getIsLoading,
   selectContacts,
 } from 'redux/contacts/selectors';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
+// import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { getUserName } from 'redux/auth/authSelectors';
+import { NavLink } from 'react-router-dom';
+import { useAuth } from 'components/context/UserAuthContext';
 
 const ContactPage = () => {
-  const contacts = useSelector(selectContacts);
-  const loading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-  const dispatch = useDispatch();
-  const user = useSelector(getUserName);
-
-  useEffect(() => {
-    if (user === null) return;
-    dispatch(fetchContacts());
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    if (error) {
-      toast.error('Oops. Something went wrong 😭');
-    }
-  }, [error]);
+  const { Logout } = useAuth();
+  const handleSubmit = e => {
+    Logout();
+  };
   return (
     <Container>
       <MainTitle>Phonebook</MainTitle>
-      <Form />
-      <Title>Contacts</Title>
-      {contacts.length === 0 ? (
-        <Message>There is no contacts</Message>
-      ) : (
-        <>
-          <Filter />
-          <ContactList />
-        </>
-      )}
-      {loading && <Loader />}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        closeOnClick
-        theme="colored"
-      />
+      <button type="submit" onClick={handleSubmit}>
+        <NavLink to={'/'}>Exit</NavLink>
+      </button>
     </Container>
   );
 };
 
-const ProtectedContactsPage = WithAuthRedirect(ContactPage, '/login');
+// const ProtectedContactsPage = WithAuthRedirect(ContactPage, '/login');
 
-export default ProtectedContactsPage;
+export default ContactPage;

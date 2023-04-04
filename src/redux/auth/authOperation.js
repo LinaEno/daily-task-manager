@@ -1,20 +1,77 @@
 import { authSlice } from './authSlice';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 const { updateUserProfile, authStateChange, authSignOut } = authSlice.actions;
-console.log(auth);
 
+export const registration = createAsyncThunk(
+  'auth/registration',
+  async (credential, thunkAPI) => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        credential.email,
+        credential.password
+      ).then(async result => {
+        try {
+          const docRef = await addDoc(collection(db, 'users'), {
+            userName: `${result.user.userName}`,
+            userId: `${result.user.uid}`,
+          });
+          console.log(docRef.id);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+      console.log(result);
+      return result;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+// export const registration = createAsyncThunk(
+//   'auth/registration',
+//   async (credential, thunkAPI) => {
+//     try {
+//       const result = await createUserWithEmailAndPassword(
+//         auth,
+//         credential.email,
+//         credential.password
+//       );
+//       console.log(result);
+//       return result;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+// export const authSignUpUser =
+//   ({ email, password, userName }) =>
+//   async (dispatch, getState) => {
+//     await createUserWithEmailAndPassword(auth, email, password).then(
+//       ({ user }) => {
+//         dispatch(
+//           updateUserProfile({
+//             userId: user.uid,
+//             userName: user.displayName,
+//           })
+//         );
+//       }
+//     );
+//   };
 // export const authSignUpUser =
 //   ({ email, password, userName }) =>
 //   async (dispatch, getState) => {
 //     try {
 //       await createUserWithEmailAndPassword(email, password);
 
-//       const user = await auth.currentUser;
+//       //   const user = await auth.currentUser;
 
-//       await user.updateProfile({
-//         displayName: userName,
-//       });
+//       //   await user.updateProfile({
+//       //     displayName: userName,
+//       //   });
 
 //       const { displayName, uid } = await auth.currentUser;
 

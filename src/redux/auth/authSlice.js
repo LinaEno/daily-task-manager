@@ -82,22 +82,48 @@ const initialState = {
   userId: null,
   userName: null,
   stateChange: false,
+  email: '',
+  token: null,
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    updateUserProfile: (state, { payload }) => ({
-      ...state,
-      userId: payload.userId,
-      userName: payload.userName,
-    }),
-    authStateChange: (state, { payload }) => ({
-      ...state,
-      stateChange: payload.stateChange,
-    }),
-    authSignOut: () => initialState,
+    registration(state, { payload }) {
+      console.log(payload);
+      state.userName = payload.userName;
+      state.email = payload.email;
+      state.userId = payload.userId;
+      state.token = payload.token;
+    },
+    login(state, { payload }) {
+      console.log(payload);
+      state.userName = payload.userName;
+      state.email = payload.email;
+      state.userId = payload.userId;
+      state.token = payload.token;
+    },
+    // extraReducers: builder => {
+    //   builder.addCase(registration.fulfilled, (state, { payload }) => {
+    //     console.log(payload);
+    //     state.userName = payload.userName;
+    //     state.email = payload.email;
+    //     state.userId = payload.userId;
+    //     state.token = payload.token;
+    //   });
+    // .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
+    //     state.isRefreshing = false;
+    //     state.isLoggedIn = false;
+    //   })
+    //   .addCase(getUserInfo.fulfilled, (state, { payload }) => {
+    //     state.username = payload.username;
+    //     state.userEmail = payload.email;
+    //     state.userId = payload.id;
+    //     state.userData = payload.userData;
+    //     state.isLoggedIn = true;
+    //   });
   },
 });
 export const authReducer = authSlice.reducer;
+export const { registration, login } = authSlice.actions;

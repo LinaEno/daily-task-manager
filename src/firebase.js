@@ -23,6 +23,3 @@ export const auth = getAuth(app);
 // export const fbDatabase = getDatabase(app);
 export const db = getFirestore(app);
 // export const fStorage = getStorage(app);
-
-console.log(app);
-console.log(auth);

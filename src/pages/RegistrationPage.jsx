@@ -8,17 +8,19 @@ import { selectUserName } from '../redux/auth/authSelectors';
 import { useAuth } from 'components/context/UserAuthContext';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { registration } from 'redux/auth/authSlice';
+// import { authSignUpUser, registration } from 'redux/auth/authOperation';
 
 export function RegistrationPage() {
   const { error, SignUp, currentUser } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  console.log(email);
-  console.log(password);
+  const dispatch = useDispatch();
 
   const [userName, setUserName] = useState('');
+
+  console.log(userName);
 
   // useEffect(() => {
   //   if (user !== null) navigate('/');
@@ -42,12 +44,29 @@ export function RegistrationPage() {
     //   currentUser && setState(initialState);
     // }
   };
+  const handleReduxSubmit = e => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password, userName)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(
+          registration({
+            userName: user.displayName,
+            email: user.email,
+            userId: user.uid,
+            token: user.accessToken,
+          })
+        );
+        navigate('/contacts');
+      })
+      .catch(console.error);
+  };
 
   return (
     <Container>
       <Title>Registration</Title>
 
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleReduxSubmit} autoComplete="off">
         <Label>
           Name
           <Input

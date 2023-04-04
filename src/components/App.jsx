@@ -7,6 +7,7 @@ import { selectStateChange } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
 // import Form from './hokform/form';
 import { RegistrationPage } from 'pages/RegistrationPage';
+import ContactsPage from 'pages/ContactPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -21,20 +22,36 @@ export function App() {
   return (
     <>
       <AppBar />
-      <RegistrationPage />
-      {/* {stateChange ? (
-        <Loader />
-      ) : (
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="register" element={<RegistrationPage />} />
-            {/* <Route path="register" element={<Form />} /> */}
-      {/* <Route path="login" element={<LoginPage />} />
-            <Route path="*" element={<PageNotFound404 />} />
-          </Routes>
-        </Suspense>
-      )} */}
+      {/* <RegistrationPage /> */}
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="register" element={<RegistrationPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="*" element={<PageNotFound404 />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
+
+//  return (
+//    <>
+//      <AppBar />
+//      <RegistrationPage />
+//      {/* {stateChange ? (
+//         <Loader />
+//       ) : (
+//         <Suspense fallback={<Loader />}>
+//           <Routes>
+//             <Route path="/" element={<HomePage />} />
+//             <Route path="register" element={<RegistrationPage />} />
+//             {/* <Route path="register" element={<Form />} /> */}
+//      {/* <Route path="login" element={<LoginPage />} />
+//             <Route path="*" element={<PageNotFound404 />} />
+//           </Routes>
+//         </Suspense>
+//       )} */}
+//    </>
+//  );

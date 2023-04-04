@@ -35,9 +35,6 @@ export default function LoginPage() {
   const handleSubmit = e => {
     e.preventDefault();
     Login(email, password);
-    // {
-    //   currentUser && setState(initialState);
-    // }
   };
 
   return (

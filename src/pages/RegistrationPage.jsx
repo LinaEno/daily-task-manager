@@ -1,101 +1,104 @@
-import { Container, Title } from 'components/App.styled';
-import { Button } from 'components/ContactList/ContactList.styled';
-import { Input, Label } from 'components/Filter/Filter.styled';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { selectUserName } from '../redux/auth/authSelectors';
-import { useAuth } from 'components/context/UserAuthContext';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
-import { registration } from 'redux/auth/authSlice';
-// import { authSignUpUser, registration } from 'redux/auth/authOperation';
+import { Container } from 'components/App.styled';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, db, storage } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { setDoc, doc } from 'firebase/firestore';
+import { Loader } from 'components/Loader/Loader';
 
 export function RegistrationPage() {
-  const { error, SignUp, currentUser } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-
   const [userName, setUserName] = useState('');
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  console.log(userName);
-
-  // useEffect(() => {
-  //   if (user !== null) navigate('/');
-  // }, [user, navigate]);
-
-  const handleCreateAccount = e => {
+  const handleCreateAccount = async e => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password, userName)
-      .then(userCredential => {
-        console.log(userCredential);
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    SignUp(email, password, userName);
-    // {
-    //   currentUser && setState(initialState);
-    // }
-  };
-  const handleReduxSubmit = e => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password, userName)
-      .then(({ user }) => {
-        console.log(user);
-        dispatch(
-          registration({
-            userName: user.displayName,
-            email: user.email,
-            userId: user.uid,
-            token: user.accessToken,
-          })
-        );
-        navigate('/contacts');
-      })
-      .catch(console.error);
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      const storageRef = ref(storage, `images/${Date.now() + userName}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        error => {
+          console.log(error);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          await updateProfile(user, {
+            displayName: userName,
+            photoURL: downloadURL,
+          });
+          await setDoc(doc(db, 'users', user.uid), {
+            uid: user.uid,
+            displayName: userName,
+            email,
+            photoURL: downloadURL,
+          });
+          setLoading(false);
+          // alert('Account created');
+          navigate('/contacts');
+        }
+      );
+    } catch (error) {
+      setLoading(false);
+      // alert('Something went wrong');
+    }
   };
 
   return (
     <Container>
-      <Title>Registration</Title>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2>Registration</h2>
+          <form onSubmit={handleCreateAccount}>
+            <label>
+              Name
+              <input
+                type="text"
+                name="userName"
+                onChange={e => setUserName(e.target.value)}
+              />
+            </label>
 
-      <form onSubmit={handleReduxSubmit} autoComplete="off">
-        <Label>
-          Name
-          <Input
-            type="text"
-            name="userName"
-            onChange={e => setUserName(e.target.value)}
-          />
-        </Label>
+            <label>
+              E-mail
+              <input
+                type="email"
+                name="email"
+                onChange={e => setEmail(e.target.value)}
+              />
+            </label>
 
-        <Label>
-          E-mail
-          <Input
-            type="email"
-            name="email"
-            onChange={e => setEmail(e.target.value)}
-          />
-        </Label>
-
-        <Label>
-          Password
-          <Input
-            type="password"
-            name="password"
-            onChange={e => setPassword(e.target.value)}
-          />
-        </Label>
-
-        <Button type="submit">Registration</Button>
-      </form>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              Add foto
+              <input type="file" onChange={e => setFile(e.target.files[0])} />
+            </label>
+            <button type="submit">Registration</button>
+            <p>
+              Already have an account? <Link to={'/login'}>Login</Link>
+            </p>
+          </form>
+        </>
+      )}
     </Container>
   );
 }

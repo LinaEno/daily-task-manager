@@ -1,24 +1,30 @@
-// import { ContainerWelcome, WelcomeMessage } from 'components/App.styled';
-// import { Button } from 'components/ContactList/ContactList.styled';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { authSignOutUser } from 'redux/auth/authOperation';
-// import { getUserName, selectUserName } from 'redux/auth/authSelectors';
+import { ContainerWelcome, WelcomeMessage } from 'components/App.styled';
+import { Button } from 'components/ContactList/ContactList.styled';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import useAuth from 'hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
-// export const UserMenu = () => {
-//   const dispatch = useDispatch();
+export const UserMenu = () => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
-//   const user = useSelector(selectUserName);
+  const handleSubmit = () => {
+    signOut(auth)
+      .then(() => {
+        // alert('Logout');
+        navigate('/');
+      })
+      .catch(error => console.log(error));
+  };
 
-//   const handleChange = () => {
-//     dispatch(authSignOutUser());
-//   };
-
-//   return (
-//     <ContainerWelcome>
-//       <WelcomeMessage>Welcome, {user}</WelcomeMessage>
-//       <Button type="button" onClick={handleChange}>
-//         Logout
-//       </Button>
-//     </ContainerWelcome>
-//   );
-// };
+  return (
+    <ContainerWelcome>
+      <WelcomeMessage>Welcome, {currentUser.displayName}</WelcomeMessage>
+      <img src={currentUser?.photoURL} alt="user" width={50} />
+      <Button type="button" onClick={handleSubmit}>
+        Logout
+      </Button>
+    </ContainerWelcome>
+  );
+};

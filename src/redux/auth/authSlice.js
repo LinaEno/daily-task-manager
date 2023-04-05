@@ -84,6 +84,8 @@ const initialState = {
   stateChange: false,
   email: '',
   token: null,
+  isLoggedIn: false,
+  isRefreshing: true,
 };
 
 export const authSlice = createSlice({
@@ -96,6 +98,8 @@ export const authSlice = createSlice({
       state.email = payload.email;
       state.userId = payload.userId;
       state.token = payload.token;
+      state.isLoggedIn = true;
+      state.isRefreshing = false;
     },
     login(state, { payload }) {
       console.log(payload);
@@ -103,6 +107,11 @@ export const authSlice = createSlice({
       state.email = payload.email;
       state.userId = payload.userId;
       state.token = payload.token;
+      state.isLoggedIn = true;
+      state.isRefreshing = false;
+    },
+    logout(state) {
+      state = initialState;
     },
     // extraReducers: builder => {
     //   builder.addCase(registration.fulfilled, (state, { payload }) => {
@@ -126,4 +135,4 @@ export const authSlice = createSlice({
   },
 });
 export const authReducer = authSlice.reducer;
-export const { registration, login } = authSlice.actions;
+export const { registration, login, logout } = authSlice.actions;

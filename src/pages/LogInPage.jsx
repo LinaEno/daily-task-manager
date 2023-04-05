@@ -1,70 +1,68 @@
-import { Container, Title } from 'components/App.styled';
-import { Button } from 'components/ContactList/ContactList.styled';
-import { Input, Label } from 'components/Filter/Filter.styled';
+import { Container } from 'components/App.styled';
+
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { login, registration } from 'redux/auth/authSlice';
-import { useAuth } from 'components/context/UserAuthContext';
+import { Loader } from 'components/Loader/Loader';
 
 export default function LoginPage() {
-  const { Login } = useAuth();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        // dispatch(
-        //   registration({
-        //     email: user.email,
-        //     userId: user.uid,
-        //     token: user.accessToken,
-        //   })
-        // );
-        navigate('/contacts');
-      })
-      .catch(e => console.log(e));
-  };
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    Login(email, password);
+    setLoading(true);
+    try {
+      const userCredential = signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log(user);
+      setLoading(false);
+      // alert('Success');
+      navigate('/contacts');
+    } catch (error) {
+      setLoading(false);
+      // alert('Something went wrong');
+    }
+    navigate('/contacts');
   };
 
   return (
     <Container>
-      <Title>Log in</Title>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          E-mail
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </Label>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2>Log in</h2>
+          <form onSubmit={handleSubmit} autoComplete="off">
+            <label>
+              E-mail
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
+            </label>
 
-        <Label>
-          Password
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </Label>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </label>
 
-        <Button type="submit">
-          <NavLink to={'/contacts'}>Log in</NavLink>
-        </Button>
-      </form>
+            <button type="submit">
+              <NavLink to={'/contacts'}>Log in</NavLink>
+            </button>
+          </form>
+        </>
+      )}
     </Container>
   );
 }

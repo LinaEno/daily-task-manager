@@ -1,9 +1,12 @@
 import { authSlice } from './authSlice';
 import { auth, db } from '../../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-const { updateUserProfile, authStateChange, authSignOut } = authSlice.actions;
+// const { registration, login, logout } = authSlice.actions;
 
 export const registration = createAsyncThunk(
   'auth/registration',
@@ -26,6 +29,21 @@ export const registration = createAsyncThunk(
       });
       console.log(result);
       return result;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credential, thunkAPI) => {
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        credential.email,
+        credential.password
+      );
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

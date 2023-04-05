@@ -28,3 +28,13 @@ export const UserMenu = () => {
     </ContainerWelcome>
   );
 };
+
+//   return (
+//     <ContainerWelcome>
+//       <WelcomeMessage>Welcome, {currentUser.displayName}</WelcomeMessage>
+//       <img src={currentUser?.photoURL} alt="user" width={50} />
+//       <Button type="button" onClick={handleSubmit}>
+//         Logout
+//       </Button>
+//     </ContainerWelcome>
+//   );

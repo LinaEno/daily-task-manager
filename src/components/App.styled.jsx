@@ -3,12 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   margin: 0 auto;
-  width: 500px;
   background-color: ${p => p.theme.colors.white};
   padding: ${p => p.theme.space[5]}px;
-  border: 1px solid;
-  border-color: ${p => p.theme.colors.borderBtn};
-  border-radius: ${p => p.theme.borders.borderRadius}px;
 `;
 
 export const ContainerHome = styled(Container)`

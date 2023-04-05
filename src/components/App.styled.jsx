@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
   margin: 0 auto;
   width: 500px;
-  background-color: ${p => p.theme.colors.background};
+  background-color: ${p => p.theme.colors.white};
   padding: ${p => p.theme.space[5]}px;
   border: 1px solid;
   border-color: ${p => p.theme.colors.borderBtn};
@@ -32,27 +32,27 @@ export const MainTitle = styled.h1`
 
 export const Title = styled.h2`
   font-size: ${p => p.theme.fontSizes.xl};
-  color: ${p => p.theme.colors.mainText};
+  color: ${p => p.theme.colors.black};
   text-align: center;
   line-height: ${p => p.theme.lineHeights.title};
 `;
 
 export const Message = styled.p`
   font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.mainText};
+  color: ${p => p.theme.colors.black};
   text-align: center;
   line-height: ${p => p.theme.lineHeights.title};
 `;
 
 export const WelcomeMessage = styled.span`
   font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.mainText};
+  color: ${p => p.theme.colors.black};
   margin-right: ${p => p.theme.space[4]}px;
   line-height: ${p => p.theme.lineHeights.title};
 `;
 export const Link = styled(NavLink)`
   font-size: ${p => p.theme.fontSizes.xl};
-  color: ${p => p.theme.colors.mainText};
+  color: ${p => p.theme.colors.black};
   text-align: center;
   line-height: ${p => p.theme.lineHeights.title};
   &:not(:last-child) {

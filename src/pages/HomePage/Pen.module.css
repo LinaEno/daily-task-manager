@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+#rectangle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  margin: 200px auto;
+  font-size: 45px;
+  letter-spacing: 0.1em;
+  font-family: 'Delicious Handrawn', sans-serif;
+}
+
+#rectangle > span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 60px;
+  background-color: #F5F5F5;
+  border-left: 1px solid transparent;
+  animation: Fwrite 9s steps(150, start) 1, Wbar 0.5s step-end 1;
+}
+
+#rectangle > p:hover {
+  animation-play-state: paused;
+}
+
+@keyframes Fwrite {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes Wbar {
+  0% {
+    border-left-color: transparent;
+  }
+  50% {
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+  }
+}
+
+.pen {
+  display: block;
+  position: absolute;
+  /* left: 0; */
+  top: -40px;
+  width: 250px;
+  height: 300px;
+  animation: 9s 1 linear slidein;
+  z-index: 2;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 1024px){
+  .pen {
+    left: 12%;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .pen {
+    left: 20%;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .pen {
+    left: 23%;
+  }
+}
+
+@media screen and (min-width: 1920px){
+  .pen {
+    left: 30%;
+  }
+}
+
+@media screen and (min-width: 2560px){
+  .pen {
+    left: 35%;
+  }
+}
+
+.bodypen {
+  position: absolute;
+  left: 30px;
+  width: 220px;
+  height: 40px;
+  transform: rotate(-40deg);
+  transform-origin: top left;
+  background-color: #6B5DD3;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  animation: 0.25s 37 alternate updownpen, 0.5s 17 alternate rotateBody;
+}
+
+.whitestripe {
+  position: absolute;
+  right: 40px;
+  width: 20px;
+  height: 40px;
+  background-color: white;
+}
+
+.blackstripe {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.headpen {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 50px solid #e0cba0;
+  transform: rotate(50deg);
+  transform-origin: top left;
+  animation: 0.25s 38 alternate updownpen, 0.5s 17 alternate rotate;
+}
+
+.mine {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 18px solid grey;
+  top: -17px;
+  left: -7px;
+}
+
+@keyframes updownpen {
+  from {
+    top: 80%;
+  }
+  to {
+    top: 85%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 2rem;
+  }
+  to {
+    margin-left: 45rem;
+    visibility: visible;
+    display: none;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(50deg);
+  }
+  to {
+    transform: rotate(60deg);
+  }
+}
+
+@keyframes rotateBody {
+  from {
+    transform: rotate(-40deg);
+  }
+  to {
+    transform: rotate(-30deg);
+  }
+}
+

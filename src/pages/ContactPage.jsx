@@ -3,7 +3,7 @@ import { Container, MainTitle } from 'components/App.styled';
 const ContactPage = () => {
   return (
     <Container>
-      <MainTitle>Phonebook</MainTitle>
+      <h2>Phonebook</h2>
     </Container>
   );
 };

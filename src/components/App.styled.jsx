@@ -25,7 +25,7 @@ export const ContainerWelcome = styled(ContainerAuth)`
 
 export const MainTitle = styled.h1`
   font-size: ${p => p.theme.fontSizes.xl};
-  color: ${p => p.theme.colors.mainText};
+  color: ${p => p.theme.colors.black};
   text-align: center;
   line-height: ${p => p.theme.lineHeights.title};
 `;

@@ -17,9 +17,6 @@ const LoginPage = lazy(() => import('pages/LogInPage'));
 const PageNotFound404 = lazy(() => import('pages/Page404'));
 
 export function App() {
-  const dispatch = useDispatch();
-  const stateChange = useSelector(selectStateChange);
-
   return (
     <>
       <AppBar />

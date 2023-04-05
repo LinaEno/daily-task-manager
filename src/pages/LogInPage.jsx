@@ -3,7 +3,7 @@ import { Container } from 'components/App.styled';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 
 export default function LoginPage() {
@@ -60,6 +60,9 @@ export default function LoginPage() {
             <button type="submit">
               <NavLink to={'/contacts'}>Log in</NavLink>
             </button>
+            <p>
+              Have not an account? <Link to={'/register'}>Create account</Link>
+            </p>
           </form>
         </>
       )}

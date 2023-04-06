@@ -45,7 +45,7 @@ export function RegistrationPage() {
           });
           setLoading(false);
           // alert('Account created');
-          navigate('/contacts');
+          navigate('/');
         }
       );
     } catch (error) {

@@ -1,11 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import React, { lazy, Suspense, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from './AppBar';
-import { selectStateChange } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
-// import Form from './hokform/form';
 import { RegistrationPage } from 'pages/RegistrationPage';
 import TasksPage from 'pages/TasksPage';
 import { AuthRoute } from 'routes';
@@ -33,28 +30,27 @@ export function App() {
       <ThemeProvider theme={normalizedTheme}>
         <GlobalStyles />
         <AppBar />
-        {/* <RegistrationPage /> */}
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route
-              path="/contacts"
+            <Route path="register" element={<RegistrationPage />} />
+            {/* <Route
+              path="contacts"
               element={
                 <AuthRoute>
                   <TasksPage />
                 </AuthRoute>
               }
-            />
+            /> */}
             <Route
-              path="/add"
+              path="add"
               element={
                 <AuthRoute>
                   <CreateTaskPage />
                 </AuthRoute>
               }
             />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="login" element={<LoginPage />} />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
         </Suspense>

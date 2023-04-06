@@ -22,7 +22,8 @@ export const UserMenu = () => {
     <ContainerWelcome>
       <p>Welcome, {currentUser.displayName}</p>
       <img src={currentUser?.photoURL} alt="user" width={50} />
-      <NavLink to="add">Add</NavLink>
+      <NavLink to="/">Tasks</NavLink>
+      <NavLink to="/add">Add</NavLink>
       <Button type="button" onClick={handleSubmit}>
         Logout
       </Button>

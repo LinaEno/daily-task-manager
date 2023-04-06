@@ -21,12 +21,11 @@ export default function LoginPage() {
       console.log(user);
       setLoading(false);
       // alert('Success');
-      navigate('/contacts');
+      navigate('/');
     } catch (error) {
       setLoading(false);
       // alert('Something went wrong');
     }
-    navigate('/contacts');
   };
 
   return (
@@ -57,9 +56,7 @@ export default function LoginPage() {
               />
             </label>
 
-            <button type="submit">
-              <NavLink to={'/contacts'}>Log in</NavLink>
-            </button>
+            <button type="submit">Log in</button>
             <p>
               Have not an account? <Link to={'/register'}>Create account</Link>
             </p>

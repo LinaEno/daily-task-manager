@@ -14,7 +14,8 @@ import {
 
 const TasksPage = () => {
   const { currentUser } = useAuth();
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState({});
+  // const [allTasks, setAllTasks] = useState([]);
 
   console.log(tasks);
 
@@ -35,14 +36,15 @@ const TasksPage = () => {
       //   }
       // );
 
-      const userTasks = query(
-        collectionGroup(db, 'tasks'),
-        where('uid', '==', 'tasks.uid')
-      );
+      const userTasks = query(collectionGroup(db, 'tasks'));
       const querySnapshot = await getDocs(userTasks);
+      console.log(querySnapshot);
       querySnapshot.forEach(doc => {
         console.log(doc.id, ' => ', doc.data());
+        setTasks(doc.data());
       });
+
+      //,where('uid', '==', 'currentUser.uid');
 
       // const querySnapshot = await getDocs(
       //   collection(db, 'users', currentUser.uid, 'tasks')
@@ -50,9 +52,9 @@ const TasksPage = () => {
       // querySnapshot.forEach(doc => {
       //   console.log(doc.id, ' => ', doc.data());
       //   console.log(doc);
-      //   // let array;
-      //   // array.push(doc.data());
-      //   // setTasks(array);
+      // let array;
+      // array.push(doc.data());
+      // setTasks(array);
       // });
 
       // await onSnapshot(doc(db, 'tasks', currentUser.tasks.id), doc => {
@@ -60,16 +62,23 @@ const TasksPage = () => {
       //   setTasks(doc.data());
       // });
 
-      // await onSnapshot(doc(db, 'users', currentUser.uid, 'tasks'), data =>
-      //   setTasks(data.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+      // await onSnapshot(
+      //   doc(db, 'users', currentUser.uid),
+      //   doc => console.log(doc.data())
+      //   // setTasks(data.docs.map(doc => ({ ...doc.data(), id: doc.id })))
       // );
     };
     getAllTasks();
   }, [currentUser.uid]);
 
+  console.log(tasks);
+
   return (
     <Container>
-      <MainTitle>Daily tasks</MainTitle>
+      <h3>Daily tasks</h3>
+      <p>{tasks.title}</p>
+      <p>{tasks.description}</p>
+
       <ul>
         {tasks.length > 0 &&
           tasks.map(({ title, description }) => {
@@ -83,6 +92,22 @@ const TasksPage = () => {
       </ul>
     </Container>
   );
+  // return (
+  //   <Container>
+  //     <h3>Daily tasks</h3>
+  //     <ul>
+  //       {tasks.length > 0 &&
+  //         tasks.map(({ title, description }) => {
+  //           return (
+  //             <li>
+  //               <p>Title: {title}</p>
+  //               <p>Description: {description}</p>
+  //             </li>
+  //           );
+  //         })}
+  //     </ul>
+  //   </Container>
+  // );
 };
 
 export default TasksPage;

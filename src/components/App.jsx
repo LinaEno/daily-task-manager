@@ -7,8 +7,9 @@ import { selectStateChange } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
 // import Form from './hokform/form';
 import { RegistrationPage } from 'pages/RegistrationPage';
-import ContactsPage from 'pages/ContactPage';
+import TasksPage from 'pages/TasksPage';
 import { AuthRoute } from 'routes';
+import CreateTaskPage from 'pages/CreateTaskPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -29,7 +30,15 @@ export function App() {
             path="/contacts"
             element={
               <AuthRoute>
-                <ContactsPage />
+                <TasksPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <AuthRoute>
+                <CreateTaskPage />
               </AuthRoute>
             }
           />

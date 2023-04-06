@@ -15,13 +15,13 @@ const HomePage = () => {
             Please sign in or sign up to start!
             <span></span>
           </div>
-          <div class={css.pen}>
-            <div class={css.bodypen}>
-              <div class={css.whitestripe}></div>
-              <div class={css.blackstripe}></div>
+          <div className={css.pen}>
+            <div className={css.bodypen}>
+              <div className={css.whitestripe}></div>
+              <div className={css.blackstripe}></div>
             </div>
-            <div class={css.headpen}>
-              <div class={css.mine}></div>
+            <div className={css.headpen}>
+              <div className={css.mine}></div>
             </div>
           </div>
         </ContainerHome>

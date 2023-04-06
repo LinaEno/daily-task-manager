@@ -20,7 +20,7 @@ export const UserMenu = () => {
 
   return (
     <ContainerWelcome>
-      <WelcomeMessage>Welcome, {currentUser.displayName}</WelcomeMessage>
+      <p>Welcome, {currentUser.displayName}</p>
       <img src={currentUser?.photoURL} alt="user" width={50} />
       <NavLink to="add">Add</NavLink>
       <Button type="button" onClick={handleSubmit}>

@@ -24,6 +24,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.9",
     "three": "^0.150.0",
     "tsparticles": "^2.9.3",
     "tsparticles-engine": "^2.9.3",
@@ -57,7 +58,6 @@
   },
   "description": "Этот проект был создан при помощи\r [Create React App](https://github.com/facebook/create-react-app). Для знакомства\r и настройки дополнительных возможностей\r [обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LinaEno/daily-task-manager.git"

@@ -30,6 +30,11 @@ img {
   margin-top: 0;
   animation: hueRotate 6s ease-in-out 3s infinite;
 }
+h2,
+h4 {
+  padding: 0;
+  margin: 0;
+}
 
 @keyframes hueRotate {
   0% {

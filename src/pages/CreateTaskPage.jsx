@@ -1,26 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import { db } from '../firebase';
-import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import useAuth from 'hooks/useAuth';
 
 const CreateTaskPage = () => {
   const { currentUser } = useAuth();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [comleted, setCompleted] = useState(false);
 
   const createTask = async () => {
-    // await updateDoc(doc(db, 'users', currentUser.uid), {
-    //   tasks: { title, description },
-    // });
-    // await addDoc(collection(db, 'tasks', currentUser.uid), {
-    //   title,
-    //   description,
-    // });
-
     await addDoc(collection(db, 'users', currentUser.uid, 'tasks'), {
       title,
       description,
+      userId: currentUser.uid,
     });
   };
 

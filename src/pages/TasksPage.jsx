@@ -3,6 +3,7 @@ import useAuth from 'hooks/useAuth';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { collectionGroup, getDocs, query, where } from 'firebase/firestore';
+import { Progress } from 'components/ProgressBox/ProgressBox';
 
 const TasksPage = () => {
   const { currentUser } = useAuth();
@@ -37,6 +38,7 @@ const TasksPage = () => {
             );
           })}
       </ul>
+      <Progress />
     </Container>
   );
 };

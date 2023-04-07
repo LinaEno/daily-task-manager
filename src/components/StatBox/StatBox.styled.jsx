@@ -44,6 +44,7 @@ export const StatTitleWrap = styled.div`
 
 export const StatTitle = styled.h3`
   margin: 0;
+  text-align: left;
   /* font-family: TT Commons; */
   font-weight: 500;
   font-size: 16px;

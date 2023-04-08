@@ -4,19 +4,20 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import useAuth from 'hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { resetTasksState } from 'redux/tasks/tasksSlice';
+import { logout } from 'redux/auth/authOperation';
 
 export const UserMenu = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    signOut(auth)
-      .then(() => {
-        // alert('Logout');
-        navigate('/');
-      })
-      .catch(error => console.log(error));
-  };
+  function handleLogout() {
+    dispatch(logout());
+    dispatch(resetTasksState());
+    navigate('/');
+  }
 
   return (
     <ContainerWelcome>
@@ -24,19 +25,9 @@ export const UserMenu = () => {
       <img src={currentUser?.photoURL} alt="user" width={50} />
       <NavLink to="/">Tasks</NavLink>
       <NavLink to="/add">Add</NavLink>
-      <Button type="button" onClick={handleSubmit}>
+      <Button type="button" onClick={handleLogout}>
         Logout
       </Button>
     </ContainerWelcome>
   );
 };
-
-//   return (
-//     <ContainerWelcome>
-//       <WelcomeMessage>Welcome, {currentUser.displayName}</WelcomeMessage>
-//       <img src={currentUser?.photoURL} alt="user" width={50} />
-//       <Button type="button" onClick={handleSubmit}>
-//         Logout
-//       </Button>
-//     </ContainerWelcome>
-//   );

@@ -1,28 +1,27 @@
-import React from 'react';
 import { useState } from 'react';
-import { db } from '../firebase';
-import { addDoc, collection } from 'firebase/firestore';
-import useAuth from 'hooks/useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { createTask } from 'redux/tasks/operations';
+import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 
 const CreateTaskPage = () => {
-  const { currentUser } = useAuth();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [comleted, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(false);
+  const currentUserUid = useSelector(selectCurrentUserUid);
 
-  const createTask = async () => {
-    await addDoc(collection(db, 'users', currentUser.uid, 'tasks'), {
+  const dispatch = useDispatch();
+
+  const handleCreateTask = event => {
+    event.preventDefault();
+    const task = {
       title,
       description,
-      userId: currentUser.uid,
-    });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    createTask();
+      completed,
+    };
+    const userId = currentUserUid;
+    dispatch(createTask({ userId, task }));
     reset();
-    e.target.reset();
+    event.target.reset();
   };
 
   const reset = () => {
@@ -33,7 +32,7 @@ const CreateTaskPage = () => {
   return (
     <section>
       <h3>Add your task</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleCreateTask}>
         <label>
           Title
           <input
@@ -46,10 +45,18 @@ const CreateTaskPage = () => {
           Description
           <input
             type="text"
-            name="title"
+            name="description"
             onChange={e => setDescription(e.target.value)}
           />
         </label>
+        <input
+          type="checkbox"
+          name="completed"
+          checked={completed}
+          onChange={e => setCompleted(e.target.checked)}
+          disabled
+        />
+        <label htmlFor="completed">Completed</label>
         <button type="submit">Add task</button>
       </form>
     </section>

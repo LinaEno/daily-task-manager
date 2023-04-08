@@ -11,18 +11,23 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { contactsReducer } from './contacts/contactsSlice';
+import tasksReducer from './tasks/tasksSlice';
 import { authReducer } from './auth/authSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
 };
+const tasksPersistConfig = {
+  key: 'tasks',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    tasks: persistReducer(tasksPersistConfig, tasksReducer),
+    // tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -33,15 +38,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// import { configureStore, combineReducers } from '@reduxjs/toolkit';
-
-// import { authSlice } from './auth/authSlice';
-
-// const rootReducer = combineReducers({
-//   [authSlice.name]: authSlice.reducer,
-// });
-
-// export const store = configureStore({
-//   reducer: rootReducer,
-// });

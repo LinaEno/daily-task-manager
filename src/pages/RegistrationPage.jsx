@@ -6,6 +6,8 @@ import { auth, db, storage } from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { setDoc, doc } from 'firebase/firestore';
 import { Loader } from 'components/Loader/Loader';
+import { createAccount } from 'redux/auth/authOperation';
+import { useDispatch } from 'react-redux';
 
 export function RegistrationPage() {
   const navigate = useNavigate();
@@ -14,45 +16,50 @@ export function RegistrationPage() {
   const [userName, setUserName] = useState('');
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleCreateAccount = async e => {
+  const handleCreateAccount = e => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      const storageRef = ref(storage, `images/${Date.now() + userName}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        error => {
-          console.log(error);
-        },
-        async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          await updateProfile(user, {
-            displayName: userName,
-            photoURL: downloadURL,
-          });
-          await setDoc(doc(db, 'users', user.uid), {
-            uid: user.uid,
-            displayName: userName,
-            email,
-            photoURL: downloadURL,
-          });
-          setLoading(false);
-          // alert('Account created');
-          navigate('/');
-        }
-      );
-    } catch (error) {
-      setLoading(false);
-      // alert('Something went wrong');
-    }
+    dispatch(createAccount({ email, password, userName, file }));
+    navigate('/');
   };
+
+  // const handleCreateAccount = async e => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password
+  //     );
+  //     const user = userCredential.user;
+  //     const storageRef = ref(storage, `images/${Date.now() + userName}`);
+  //     const uploadTask = uploadBytesResumable(storageRef, file);
+  //     uploadTask.on(
+  //       error => {
+  //         console.log(error);
+  //       },
+  //       async () => {
+  //         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+  //         await updateProfile(user, {
+  //           displayName: userName,
+  //           photoURL: downloadURL,
+  //         });
+  //         await setDoc(doc(db, 'users', user.uid), {
+  //           uid: user.uid,
+  //           displayName: userName,
+  //           email,
+  //           photoURL: downloadURL,
+  //         });
+  //         setLoading(false);
+  //         navigate('/');
+  //       }
+  //     );
+  //   } catch (error) {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <Container>

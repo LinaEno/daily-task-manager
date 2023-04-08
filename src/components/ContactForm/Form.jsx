@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Button } from 'components/ContactList/ContactList.styled';
 import { Label, Input } from 'components/Filter/Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/operations';
-import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/tasks/operations';
+import { selectContacts } from 'redux/tasks/selectors';
 
 export default function Form() {
   const [name, setName] = useState('');

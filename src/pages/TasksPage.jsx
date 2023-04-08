@@ -51,7 +51,6 @@ const TasksPage = () => {
                   checked={completed}
                   onChange={() => dispatch(toggleComplete(id))}
                 />
-                {/* <input type="checkbox" onChange={() => toggleComplete(id)} /> */}
                 <button onClick={() => dispatch(deleteTask(id))}>X</button>
               </li>
             );

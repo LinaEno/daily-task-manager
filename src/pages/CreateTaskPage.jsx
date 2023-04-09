@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createTask } from 'redux/tasks/operations';
+import { useSelector } from 'react-redux';
+import {} from 'redux/tasks/operations';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const CreateTaskPage = () => {
   const [title, setTitle] = useState('');
@@ -9,19 +11,25 @@ const CreateTaskPage = () => {
   const [completed, setCompleted] = useState(false);
   const currentUserUid = useSelector(selectCurrentUserUid);
 
-  const dispatch = useDispatch();
-
-  const handleCreateTask = event => {
+  const handleCreateTask = async event => {
     event.preventDefault();
     const task = {
       title,
       description,
       completed,
     };
-    const userId = currentUserUid;
-    dispatch(createTask({ userId, task }));
-    reset();
-    event.target.reset();
+    try {
+      const tasksRef = collection(db, `users/${currentUserUid}/tasks`);
+      const newTaskRef = doc(tasksRef);
+      const newTaskId = newTaskRef.id;
+      const newTask = { ...task, id: newTaskId };
+      await setDoc(newTaskRef, newTask);
+      reset();
+      event.target.reset();
+      return newTask;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const reset = () => {
@@ -54,7 +62,6 @@ const CreateTaskPage = () => {
           name="completed"
           checked={completed}
           onChange={e => setCompleted(e.target.checked)}
-          disabled
         />
         <label htmlFor="completed">Completed</label>
         <button type="submit">Add task</button>

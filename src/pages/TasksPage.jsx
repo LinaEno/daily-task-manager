@@ -1,39 +1,55 @@
 import { Container } from 'components/App.styled';
-import useAuth from 'hooks/useAuth';
 import { useEffect, useState } from 'react';
 
-import { deleteTask, fetchTasks, toggleComplete } from 'redux/tasks/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTasks } from 'redux/tasks/selectors';
+import { useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from 'firebase/firestore';
+import { db } from '../firebase';
 
 const TasksPage = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
-
-  const dispatch = useDispatch();
-  const tasks = useSelector(selectTasks);
-  console.log(tasks);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     if (!currentUserUid) return;
-    dispatch(fetchTasks());
-    // dispatch(fetchTasks()).unwrap();
-  }, [currentUserUid, dispatch]);
+    const getAllTasks = async () => {
+      const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
+      const querySnapshot = await getDocs(userTasksRef);
+      const tasksData = [];
+      querySnapshot.forEach(doc => {
+        tasksData.push(doc.data());
+      });
+      setTasks(tasksData);
+    };
+    getAllTasks();
+  }, [currentUserUid]);
 
-  //   useEffect(() => {
-  //   if (!currentUser.uid) return;
-  //   const getAllTasks = async () => {
-  //     const userTasks = query(
-  //       collectionGroup(db, 'tasks'),
-  //       where('userId', '==', currentUser.uid)
-  //     );
-  //     const querySnapshot = await getDocs(userTasks);
-  //     querySnapshot.forEach(doc => {
-  //       setTasks(prevState => [...prevState, doc.data()]);
-  //     });
-  //   };
-  //   getAllTasks();
-  // }, [currentUser.uid]);
+  const deleteTask = async taskId => {
+    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
+    const taskRef = doc(userTasksRef, taskId);
+    await deleteDoc(taskRef);
+    setTasks(prevState => prevState.filter(task => task.id !== taskId));
+  };
+
+  const toggleComplete = async (taskId, completed) => {
+    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
+    const taskRef = doc(userTasksRef, taskId);
+    await updateDoc(taskRef, { completed });
+    setTasks(prevState =>
+      prevState.map(task => {
+        if (task.id === taskId) {
+          return { ...task, completed };
+        }
+        return task;
+      })
+    );
+  };
 
   return (
     <Container>
@@ -49,9 +65,9 @@ const TasksPage = () => {
                   type="checkbox"
                   name="completed"
                   checked={completed}
-                  onChange={() => dispatch(toggleComplete(id))}
+                  onChange={() => toggleComplete(id, !completed)}
                 />
-                <button onClick={() => dispatch(deleteTask(id))}>X</button>
+                <button onClick={() => deleteTask(id)}>X</button>
               </li>
             );
           })}

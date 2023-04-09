@@ -1,7 +1,7 @@
 import { Container } from 'components/App.styled';
 import { useEffect, useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import {
   collection,
@@ -10,11 +10,13 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../../firebase';
+import { openModalEditTask } from 'redux/global/slice';
 
 const TasksPage = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
   const [tasks, setTasks] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!currentUserUid) return;
@@ -68,6 +70,9 @@ const TasksPage = () => {
                   onChange={() => toggleComplete(id, !completed)}
                 />
                 <button onClick={() => deleteTask(id)}>X</button>
+                <button onClick={() => dispatch(openModalEditTask())}>
+                  Edit
+                </button>
               </li>
             );
           })}

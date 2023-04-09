@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AppBar from './AppBar';
 import { Loader } from './Loader/Loader';
 import { RegistrationPage } from 'pages/RegistrationPage';
-import TasksPage from 'pages/TasksPage';
+import TasksPage from 'components/Tasks/TasksPage';
 import { AuthRoute } from 'routes';
 
 import CreateTaskPage from 'pages/CreateTaskPage';

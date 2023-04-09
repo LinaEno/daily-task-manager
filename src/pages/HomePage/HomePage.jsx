@@ -1,6 +1,6 @@
 import { ContainerHome } from 'components/App.styled';
 import css from './Pen.module.css';
-import TasksPage from 'pages/TasksPage';
+import TasksPage from 'components/Tasks/TasksPage';
 import useAuth from 'hooks/useAuth';
 
 const HomePage = () => {

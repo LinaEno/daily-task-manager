@@ -9,3 +9,9 @@ export const light = {
   bgcButton: '#FFBB22',
   colorButton: '#20333F',
 };
+
+//box-shadow: ${({ theme }) => theme.shadows.regular};
+//   background: ${({ theme }) => theme.bgcButton};
+// padding-top: ${({ theme }) => theme.spacing(5)};
+//   padding-bottom: ${({ theme }) => theme.spacing(5)};
+//   border-bottom: 2px solid ${({ theme }) => theme.text};

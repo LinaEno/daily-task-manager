@@ -8,4 +8,10 @@ export const dark = {
   textGrayGraph: '#BFBFBF',
   bgcButton: '#5949ce',
   colorButton: '#F5F5F5',
-}
+};
+
+//box-shadow: ${({ theme }) => theme.shadows.regular};
+//   background: ${({ theme }) => theme.bgcButton};
+// padding-top: ${({ theme }) => theme.spacing(5)};
+//   padding-bottom: ${({ theme }) => theme.spacing(5)};
+//   border-bottom: 2px solid ${({ theme }) => theme.text};

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {} from 'redux/tasks/operations';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';

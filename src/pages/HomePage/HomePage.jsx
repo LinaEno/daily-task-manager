@@ -8,6 +8,8 @@ import { onAuthStateChanged } from '@firebase/auth';
 import { auth } from '../../firebase';
 import { setCurrentUser } from 'redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { Default } from 'components/Media/Media';
+import { Loader } from 'components/Loader/Loader';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -22,18 +24,20 @@ const HomePage = () => {
       ) : (
         <ContainerHome>
           <div id={css['rectangle']}>
-            Please sign in or sign up to start!
+            Please sign in or sign up to start !
             <span></span>
           </div>
-          <div className={css.pen}>
-            <div className={css.bodypen}>
-              <div className={css.whitestripe}></div>
-              <div className={css.blackstripe}></div>
+         <Default>
+            <div className={css.pen}>
+              <div className={css.bodypen}>
+                <div className={css.whitestripe}></div>
+                <div className={css.blackstripe}></div>
+              </div>
+              <div className={css.headpen}>
+                <div className={css.mine}></div>
+              </div>
             </div>
-            <div className={css.headpen}>
-              <div className={css.mine}></div>
-            </div>
-          </div>
+         </Default>
         </ContainerHome>
       )}
     </>

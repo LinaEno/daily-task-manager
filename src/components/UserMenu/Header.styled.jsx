@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
@@ -47,15 +48,16 @@ export const ListStyled = styled.ul`
 export const ListItem = styled.li``;
 
 export const Circle = styled.p`
-  font-family: 'Delicious Handrawn', sans-serif;
+  font-family: 'Inspiration', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 48px;
+  font-weight: 600;
   width: 50px;
   height: 50px;
   margin-bottom: 40px;
-  color: #000;
+  color: ${({ theme }) => theme.text};
   background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.6) 30%,
@@ -75,7 +77,7 @@ export const NavLinkStyled = styled(NavLink)`
   align-items: center;
   border-radius: 100%;
 
-  color: #b0bfd8;
+  color: ${({ theme }) => theme.text} ;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
   cursor: pointer;
 
@@ -109,4 +111,52 @@ export const Image = styled.img`
   margin: 0 auto;
   fill: #fff;
   stroke: #fff;
+`;
+
+
+export const Container = styled.div`
+width: 100%;
+height: 73px;
+position: relative;
+background: ${({ theme }) => theme.asideBackground};
+`
+
+export const MobileNav = styled.div`
+display: flex;
+justify-content: end;
+padding: 20px;
+gap: 20px;
+max-width: 320px;
+`
+
+export const MenuWrapper = styled.div`
+display: none;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
+export const MobileList = styled.ul`
+position: absolute;
+top: 73px;
+z-index: 10;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+padding-bottom: 20px;
+width: 100%;
+background: ${({ theme }) => theme.asideBackground};
+
+`
+
+export const MobileNavLink = styled(NavLink)`
+ font-size: ${({ theme }) => theme.fontSizes.l};
+
+  &.active {
+    color: ${({ theme }) => theme.bgcButton};
+    text-shadow: 1px 1px 2px #fff;
+    font-weight: 600;
+  }
 `;

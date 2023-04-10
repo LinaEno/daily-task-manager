@@ -10,7 +10,27 @@
   font-family: 'Delicious Handrawn', sans-serif;
 }
 
-#rectangle > span {
+@media screen and (max-width: 767px){
+  #rectangle {
+    max-width: 280px;
+    text-align: center;
+    margin: 100px auto 0;
+  }
+}
+
+@media screen and (min-width: 768px){
+  #rectangle > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 60px;
+    background-color: #F5F5F5;
+    border-left: 1px solid transparent;
+    animation: Fwrite 9s steps(150, start) 1, Wbar 0.5s step-end 1;
+  }
+}
+
+/* #rectangle > span {
   position: absolute;
   top: 0;
   right: 0;
@@ -18,11 +38,11 @@
   background-color: #F5F5F5;
   border-left: 1px solid transparent;
   animation: Fwrite 9s steps(150, start) 1, Wbar 0.5s step-end 1;
-}
+} */
 
-#rectangle > p:hover {
+/* #rectangle > p:hover {
   animation-play-state: paused;
-}
+} */
 
 @keyframes Fwrite {
   0% {

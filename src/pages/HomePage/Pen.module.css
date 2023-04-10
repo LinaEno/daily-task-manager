@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   width: 700px;
-  margin: 200px auto;
+  margin: 300px auto 0;
   font-size: 45px;
   letter-spacing: 0.1em;
   font-family: 'Delicious Handrawn', sans-serif;
@@ -49,7 +49,7 @@
   display: block;
   position: absolute;
   /* left: 0; */
-  top: -40px;
+  top: 60px;
   width: 250px;
   height: 300px;
   animation: 9s 1 linear slidein;

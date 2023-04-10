@@ -90,7 +90,7 @@ import { closeModal } from 'redux/global/slice';
 //     dispatch(closeModal());
 //   };
 
-const ModalEditTask = ({ task }) => {
+const ModalEditTask = ({ task, getAllTasks }) => {
   const [updateTitle, setUpdateTitle] = useState(task.title);
   const [updateDescription, setUpdateDescription] = useState(task.description);
   const currentUserUid = useSelector(selectCurrentUserUid);
@@ -112,6 +112,7 @@ const ModalEditTask = ({ task }) => {
       task.id
     );
     await updateDoc(taskRef, updatedFields);
+    await getAllTasks();
 
     dispatch(closeModal());
   };

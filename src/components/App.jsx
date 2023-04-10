@@ -13,6 +13,7 @@ import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles';
 import { colors } from 'styles/colors';
+import { Layout } from './Layout/Layout';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -27,9 +28,8 @@ export function App() {
 
   return (
     <>
-      <ThemeProvider theme={normalizedTheme}>
-        <GlobalStyles />
-        <AppBar />
+    <Layout />
+        {/* <AppBar /> */}
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -54,7 +54,6 @@ export function App() {
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
         </Suspense>
-      </ThemeProvider>
     </>
   );
 }

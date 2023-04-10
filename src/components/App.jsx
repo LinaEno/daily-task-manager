@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from './AppBar';
 import { Loader } from './Loader/Loader';
@@ -13,6 +13,9 @@ import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles';
 import { colors } from 'styles/colors';
+import { onAuthStateChanged } from '@firebase/auth';
+import { auth } from '../firebase';
+import { clearCurrentUser, setCurrentUser } from 'redux/auth/authSlice';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));

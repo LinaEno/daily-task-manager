@@ -11,7 +11,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+    },
+    clearCurrentUser: state => {
+      state.currentUser = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(createAccount.pending, state => {
@@ -39,18 +46,13 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(logout.fulfilled, (state, action) => {
+      .addCase(logout.fulfilled, state => {
         state.currentUserUid = null;
         state.currentUser = null;
-        // Сбрасываем состояние tasksSlice
-        // state.tasks = {
-        //   tasks: [],
-        //   error: null,
-        //   taskId: null,
-        //   loading: false,
-        // };
       });
   },
 });
+
+export const { setCurrentUser, clearCurrentUser } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

@@ -10,6 +10,7 @@ import { setCurrentUser } from 'redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Default } from 'components/Media/Media';
 import { Loader } from 'components/Loader/Loader';
+import Aside from 'components/Aside/Aside';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -17,17 +18,37 @@ const HomePage = () => {
   // const currentUser = useSelector(selectCurrentUser);
   // const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   const listener = onAuthStateChanged(auth, user => {
+  //     if (user === null) return;
+
+  //     const serializableUserData = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       displayName: user.displayName,
+  //       photoURL: user.photoURL,
+  //     };
+
+  //     dispatch(setUser({ user: serializableUserData }));
+  //     dispatch(setAuthStatus({ status: 'resolved' }));
+  //   });
+
+  //   return listener;
+  // }, [dispatch]);
+
   return (
     <>
       {currentUser ? (
-        <TasksPage />
+        <>
+          <TasksPage />
+          <Aside />
+        </>
       ) : (
         <ContainerHome>
           <div id={css['rectangle']}>
-            Please sign in or sign up to start !
-            <span></span>
+            Please sign in or sign up to start !<span></span>
           </div>
-         <Default>
+          <Default>
             <div className={css.pen}>
               <div className={css.bodypen}>
                 <div className={css.whitestripe}></div>
@@ -37,7 +58,7 @@ const HomePage = () => {
                 <div className={css.mine}></div>
               </div>
             </div>
-         </Default>
+          </Default>
         </ContainerHome>
       )}
     </>

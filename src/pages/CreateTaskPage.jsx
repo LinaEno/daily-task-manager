@@ -48,6 +48,8 @@ const CreateTaskPage = () => {
   };
 
   return (
+
+<main>
     <Section>
       <h3>Add your task</h3>
       <AddForm onSubmit={handleCreateTask}>
@@ -83,6 +85,8 @@ const CreateTaskPage = () => {
         </Check>
       </AddForm>
     </Section>
+     </main>
+
   );
 };
 

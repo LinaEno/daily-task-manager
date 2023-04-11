@@ -18,6 +18,7 @@ import {
 } from 'redux/global/selectors';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import ModalEditTask from 'components/ModalEditTask/ModalEditTask';
+import { Progress } from 'components/ProgressBox/ProgressBox';
 
 const TasksPage = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
@@ -94,6 +95,7 @@ const TasksPage = () => {
           <ModalEditTask task={taskToEdit} getAllTasks={getAllTasks} />
         </ModalContainer>
       )}
+      <Progress />
     </>
   );
   // return (

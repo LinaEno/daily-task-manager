@@ -16,6 +16,7 @@ export const ModalMobile = styled.div`
 export const ModalWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
+  background: rgb(34, 110, 195);
 
   @media screen and (max-width: 767.98px) {
     max-width: 480px;
@@ -42,6 +43,11 @@ export const ModalBox = styled.div`
   padding: 40px;
   background-color: #fff;
   border-radius: 20px;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 110, 195, 1) 0%,
+    rgba(253, 251, 45, 1) 100%
+  );
 `;
 
 export const CloseButton = styled.button`

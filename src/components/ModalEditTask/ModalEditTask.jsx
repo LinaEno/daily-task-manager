@@ -4,6 +4,14 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { closeModal } from 'redux/global/slice';
+import {
+  Box,
+  ModalBtn,
+  ModalForm,
+  ModalLabel,
+  TextArea,
+  Title,
+} from './ModalEditTask.styled';
 
 // const ModalEditTask = () => {
 //   const [task, setTask] = useState({});
@@ -118,29 +126,31 @@ const ModalEditTask = ({ task, getAllTasks }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSaveChanges}>
-        <label>
+    <Box>
+      <ModalForm onSubmit={handleSaveChanges}>
+        <Title>Add changes to your task</Title>
+        <ModalLabel>
           Title
-          <input
+          <TextArea
             type="text"
             name="updateTitle"
             value={updateTitle}
             onChange={e => setUpdateTitle(e.target.value)}
           />
-        </label>
-        <label>
+        </ModalLabel>
+        <ModalLabel>
           Description
-          <input
+          <TextArea
+            rows="8"
             type="text"
             name="updateDescription"
             value={updateDescription}
             onChange={e => setUpdateDescription(e.target.value)}
           />
-        </label>
-        <button type="submit">Edit task</button>
-      </form>
-    </div>
+        </ModalLabel>
+        <ModalBtn type="submit">Edit task</ModalBtn>
+      </ModalForm>
+    </Box>
   );
 };
 

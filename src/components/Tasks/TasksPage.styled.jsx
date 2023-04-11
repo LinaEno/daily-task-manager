@@ -56,6 +56,7 @@ export const Wrapper = styled.div`
   top: 560px; */
   margin-top: 30px;
   background: #a89fee;
+
   border-radius: 20px;
 `;
 export const WrapperTitle = styled.div`

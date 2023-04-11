@@ -177,6 +177,8 @@ const TasksPage = () => {
     tasks?.length > 0 && tasks.find(task => task.id === editingTaskId);
 
   return (
+
+  <main>
     <Container>
       <h3>Daily tasks</h3>
 
@@ -214,8 +216,9 @@ const TasksPage = () => {
           <ModalEditTask task={taskToEdit} getAllTasks={getAllTasks} />
         </ModalContainer>
       )}
-      <Progress />
+        <Progress />
     </Container>
+</main>
   );
 };
 

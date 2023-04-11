@@ -13,11 +13,30 @@ html {
     background-color: ${({ theme }) => theme.mainBackground};
     color: ${({ theme }) => theme.text};
     font-style: normal;
+    
   }
+
+  #root {
+    display: grid;
+grid-template-columns: repeat(7, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+  }
+
+header {
+  display: grid
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+main {
+  grid-area: 1 / 2 / 2 / 6;
+}
 
   aside {
     background-color: ${({ theme }) => theme.asideBackground};
     color: ${({ theme }) => theme.text};
+    grid-area: 1 / 6 / 2 / 8;
   }
 
   h1,

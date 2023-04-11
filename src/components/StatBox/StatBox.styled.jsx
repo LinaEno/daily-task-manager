@@ -4,10 +4,6 @@ export const WrapBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding-left: 10px;
-  &:not(:last-child) {
-    padding-top: 30px;
-  }
 `;
 
 export const StatWrap = styled.div`
@@ -19,11 +15,10 @@ export const ColorBoxD = styled.span`
   &::before {
     content: '';
     display: inline-block;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     border-radius: 3.36px;
     background-color: rgb(23, 51, 230);
-    /* background-color: rgb(45, 66, 221); */
   }
 `;
 
@@ -31,11 +26,10 @@ export const ColorBoxR = styled.span`
   &::before {
     content: '';
     display: inline-block;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     border-radius: 3.36px;
     background-color: rgb(239, 233, 68);
-    /* background-color: rgb(250, 243, 45); */
   }
 `;
 
@@ -46,12 +40,12 @@ export const StatTitleWrap = styled.div`
 
 export const StatTitle = styled.h3`
   margin: 0;
-  /* font-family: TT Commons; */
   font-weight: 500;
   font-size: 16px;
   line-height: 15.45px;
   color: #393d54;
   margin-bottom: 7px;
+  text-align: left;
 `;
 
 export const StatText = styled.p`

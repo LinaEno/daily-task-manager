@@ -1,5 +1,5 @@
 import { Box, TopBox, Title, Btn, BottomBox } from './ProgressBox.styled';
-import brush from '../../img/brush.png';
+// import brush from '../../img/brush.png';
 import { Chart } from 'components/Chart/Chart';
 import { StatBox } from 'components/StatBox/StatBox';
 
@@ -8,9 +8,9 @@ export const Progress = () => {
     <Box>
       <TopBox>
         <Title>Activity Graph</Title>
-        <Btn>
+        {/* <Btn>
           <img src={brush} alt="brush" />
-        </Btn>
+        </Btn> */}
       </TopBox>
       <BottomBox>
         <StatBox />

@@ -8,15 +8,11 @@ export const DoughnutBox = styled(Doughnut)`
 `;
 
 export const ChartContainer = styled.div`
-  /* width: 167.26px;
-  height: 167.26px; */
   position: relative;
   display: grid;
   place-items: center;
-  width: 200px;
-  height: 200px;
-  /* margin-top: 15px; */
-  padding-right: 10px;
+  width: 120px;
+  height: 120px;
 `;
 
 export const ChartLabel = styled.p`

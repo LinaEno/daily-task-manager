@@ -17,6 +17,24 @@ const HomePage = () => {
   // const currentUser = useSelector(selectCurrentUser);
   // const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   const listener = onAuthStateChanged(auth, user => {
+  //     if (user === null) return;
+
+  //     const serializableUserData = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       displayName: user.displayName,
+  //       photoURL: user.photoURL,
+  //     };
+
+  //     dispatch(setUser({ user: serializableUserData }));
+  //     dispatch(setAuthStatus({ status: 'resolved' }));
+  //   });
+
+  //   return listener;
+  // }, [dispatch]);
+
   return (
     <>
       {currentUser ? (
@@ -24,10 +42,9 @@ const HomePage = () => {
       ) : (
         <ContainerHome>
           <div id={css['rectangle']}>
-            Please sign in or sign up to start !
-            <span></span>
+            Please sign in or sign up to start !<span></span>
           </div>
-         <Default>
+          <Default>
             <div className={css.pen}>
               <div className={css.bodypen}>
                 <div className={css.whitestripe}></div>
@@ -37,7 +54,7 @@ const HomePage = () => {
                 <div className={css.mine}></div>
               </div>
             </div>
-         </Default>
+          </Default>
         </ContainerHome>
       )}
     </>

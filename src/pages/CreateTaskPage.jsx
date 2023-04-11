@@ -3,6 +3,17 @@ import { useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import {
+  AddBtn,
+  AddForm,
+  ChackInput,
+  ChackName,
+  Check,
+  CheckBox,
+  LabelBox,
+  Section,
+  TextArea,
+} from './CreateTaskPage.styled';
 
 const CreateTaskPage = () => {
   const [title, setTitle] = useState('');
@@ -37,35 +48,41 @@ const CreateTaskPage = () => {
   };
 
   return (
-    <section>
+    <Section>
       <h3>Add your task</h3>
-      <form onSubmit={handleCreateTask}>
-        <label>
+      <AddForm onSubmit={handleCreateTask}>
+        <LabelBox>
           Title
-          <input
+          <TextArea
             type="text"
             name="title"
             onChange={e => setTitle(e.target.value)}
           />
-        </label>
-        <label>
+        </LabelBox>
+        <LabelBox>
           Description
-          <input
+          <TextArea
+            rows="8"
             type="text"
             name="description"
             onChange={e => setDescription(e.target.value)}
           />
-        </label>
-        <input
-          type="checkbox"
-          name="completed"
-          checked={completed}
-          onChange={e => setCompleted(e.target.checked)}
-        />
-        <label htmlFor="completed">Completed</label>
-        <button type="submit">Add task</button>
-      </form>
-    </section>
+        </LabelBox>
+        <Check>
+          <ChackInput>
+            <input
+              type="checkbox"
+              name="completed"
+              checked={completed}
+              onChange={e => setCompleted(e.target.checked)}
+            />
+            <ChackName htmlFor="completed">Completed</ChackName>
+          </ChackInput>
+
+          <AddBtn type="submit">Add task</AddBtn>
+        </Check>
+      </AddForm>
+    </Section>
   );
 };
 

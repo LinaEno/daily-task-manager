@@ -177,48 +177,46 @@ const TasksPage = () => {
     tasks?.length > 0 && tasks.find(task => task.id === editingTaskId);
 
   return (
+    <main>
+      <Container>
+        <h3>Daily tasks</h3>
 
-  <main>
-    <Container>
-      <h3>Daily tasks</h3>
-
-      <section>
-        {tasks?.length > 0 &&
-          tasks.map(task => {
-            return (
-              <>
-                <Wrapper key={task.id}>
-                  <WrapperTitle>
-                    <p>Title: {task.title}</p>
-                    <p>Description: {task.description}</p>
-                  </WrapperTitle>
-                  <Input
-                    type="checkbox"
-                    name="completed"
-                    checked={task.completed}
-                    onChange={() => toggleComplete(task.id, !task.completed)}
-                  />
-                  <WrapperButton>
-                    <button onClick={() => deleteTask(task.id)}>X</button>
-                    <button
-                      onClick={() => dispatch(openModalEditTask(task.id))}
-                    >
-                      Edit
-                    </button>
-                  </WrapperButton>
-                </Wrapper>
-              </>
-            );
-          })}
-      </section>
-      {isModalOpen && (
-        <ModalContainer>
-          <ModalEditTask task={taskToEdit} getAllTasks={getAllTasks} />
-        </ModalContainer>
-      )}
-        <Progress />
-    </Container>
-</main>
+        <section>
+          {tasks?.length > 0 &&
+            tasks.map(task => {
+              return (
+                <>
+                  <Wrapper key={task.id}>
+                    <WrapperTitle>
+                      <p>Title: {task.title}</p>
+                      <p>Description: {task.description}</p>
+                    </WrapperTitle>
+                    <Input
+                      type="checkbox"
+                      name="completed"
+                      checked={task.completed}
+                      onChange={() => toggleComplete(task.id, !task.completed)}
+                    />
+                    <WrapperButton>
+                      <button onClick={() => deleteTask(task.id)}>X</button>
+                      <button
+                        onClick={() => dispatch(openModalEditTask(task.id))}
+                      >
+                        Edit
+                      </button>
+                    </WrapperButton>
+                  </Wrapper>
+                </>
+              );
+            })}
+        </section>
+        {isModalOpen && (
+          <ModalContainer>
+            <ModalEditTask task={taskToEdit} getAllTasks={getAllTasks} />
+          </ModalContainer>
+        )}
+      </Container>
+    </main>
   );
 };
 

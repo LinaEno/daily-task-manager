@@ -10,6 +10,7 @@ import { setCurrentUser } from 'redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Default } from 'components/Media/Media';
 import { Loader } from 'components/Loader/Loader';
+import Aside from 'components/Aside/Aside';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -38,7 +39,10 @@ const HomePage = () => {
   return (
     <>
       {currentUser ? (
-        <TasksPage />
+        <>
+          <TasksPage />
+          <Aside />
+        </>
       ) : (
         <ContainerHome>
           <div id={css['rectangle']}>

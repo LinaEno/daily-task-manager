@@ -1,5 +1,5 @@
 import { Box, TopBox, Title, Btn, BottomBox } from './ProgressBox.styled';
-import brush from '../../images/brush.png';
+import brush from '../../img/brush.png';
 import { Chart } from 'components/Chart/Chart';
 import { StatBox } from 'components/StatBox/StatBox';
 

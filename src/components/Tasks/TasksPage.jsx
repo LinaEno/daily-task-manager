@@ -1,4 +1,4 @@
-import { Container } from 'components/App.styled';
+// import { Container } from 'components/App.styled';
 import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,14 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
+import {
+  Container,
+  Input,
+  Wrapper,
+  WrapperTitle,
+ WrapperButton,
+  
+} from './TasksPage.styled';
 import { db } from '../../firebase';
 import { openModalEditTask } from 'redux/global/slice';
 
@@ -56,27 +64,36 @@ const TasksPage = () => {
   return (
     <Container>
       <h3>Daily tasks</h3>
-      <ul>
+       
+      <section>
         {tasks?.length > 0 &&
           tasks.map(({ title, description, id, completed }) => {
             return (
-              <li key={id}>
+             <>
+              <Wrapper key={id}>
+                <WrapperTitle>
                 <p>Title: {title}</p>
                 <p>Description: {description}</p>
-                <input
+                </WrapperTitle>
+                <Input
                   type="checkbox"
                   name="completed"
                   checked={completed}
                   onChange={() => toggleComplete(id, !completed)}
-                />
+                  />
+                  <WrapperButton>
                 <button onClick={() => deleteTask(id)}>X</button>
                 <button onClick={() => dispatch(openModalEditTask())}>
                   Edit
-                </button>
-              </li>
+                  </button>
+                  </WrapperButton>
+                </Wrapper>
+                 </>
             );
           })}
-      </ul>
+          
+        </section>
+       
     </Container>
   );
 };

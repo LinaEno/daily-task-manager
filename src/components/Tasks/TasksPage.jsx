@@ -120,6 +120,9 @@ import {
   Wrapper,
   WrapperTitle,
   WrapperButton,
+  Label,
+  SpanLabel,
+  CheckBox,
 } from './TasksPage.styled';
 import { db } from '../../firebase';
 import { openModalEditTask } from 'redux/global/slice';
@@ -187,16 +190,22 @@ const TasksPage = () => {
               return (
                 <>
                   <Wrapper key={task.id}>
+                    <CheckBox>
+                      <input
+                        type="checkbox"
+                        name="completed"
+                        checked={task.completed}
+                        id={task.id}
+                        onChange={() =>
+                          toggleComplete(task.id, !task.completed)
+                        }
+                      />
+                      <label htmlFor={task.id}></label>
+                    </CheckBox>
                     <WrapperTitle>
                       <p>Title: {task.title}</p>
                       <p>Description: {task.description}</p>
                     </WrapperTitle>
-                    <Input
-                      type="checkbox"
-                      name="completed"
-                      checked={task.completed}
-                      onChange={() => toggleComplete(task.id, !task.completed)}
-                    />
                     <WrapperButton>
                       <button onClick={() => deleteTask(task.id)}>X</button>
                       <button

@@ -14,7 +14,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles';
 import { colors } from 'styles/colors';
 
-import { Layout } from './Layout/Layout';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/global/selectors';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -23,13 +24,12 @@ const LoginPage = lazy(() => import('pages/LogInPage'));
 const PageNotFound404 = lazy(() => import('pages/Page404/Page404'));
 
 export function App() {
-  const [themeTitle] = useState('light');
+  const themeTitle = useSelector(selectTheme);
 
   const normalizedTheme = { ...theme, ...colors[themeTitle] };
   return (
-    <>
-      <Layout />
-      {/* <AppBar /> */}
+       <ThemeProvider theme={normalizedTheme}>
+      <GlobalStyles />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -46,7 +46,7 @@ export function App() {
           <Route path="*" element={<PageNotFound404 />} />
         </Routes>
       </Suspense>
-    </>
+    </ThemeProvider>
   );
 }
 

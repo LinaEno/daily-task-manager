@@ -5,7 +5,7 @@ import { colors } from 'styles/colors';
 import { theme } from 'styles/theme';
 // import { HeaderContainer } from 'components/UserMenu/Header.styled';
 import useAuth from 'hooks/useAuth';
-import { Header } from 'components/UserMenu/Header';
+import { Header } from 'components/Header/Header';
 import AuthNav from 'components/AuthNavigation/AuthNav';
 
 export const Layout = () => {

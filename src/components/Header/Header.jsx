@@ -14,7 +14,7 @@ import {
   NavStyled,
 } from './Header.styled';
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetTasksState } from 'redux/tasks/tasksSlice';
 import { logout } from 'redux/auth/authOperation';
@@ -24,7 +24,7 @@ import { BsList, BsX, BsBoxArrowRight } from 'react-icons/bs';
 import { TbLayoutGrid, TbLayoutGridAdd } from 'react-icons/tb';
 
 
-export const Header = ({ switchTheme, themeTitle }) => {
+export const Header = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,8 +46,6 @@ const handleMenu = () => {
   }
 }
 
-
-
   function handleLogout() {
     dispatch(logout());
     dispatch(resetTasksState());
@@ -59,7 +57,7 @@ const handleMenu = () => {
       <Mobile>
       <Container>
           <MobileNav>
-            <ThemeSwitcher themeTitle={themeTitle} switchTheme={switchTheme} />
+            <ThemeSwitcher />
             {isOpen ? <button type="button" onClick={handleMenu}><BsX size={30} /></button> : <button type="button" onClick={handleMenu}><BsList size={30} /></button>}
             </MobileNav>
             <MenuWrapper style={hideOrShow}>
@@ -113,7 +111,7 @@ const handleMenu = () => {
                 </Button>
               </ListItem>
             </ListStyled>
-            <ThemeSwitcher themeTitle={themeTitle} switchTheme={switchTheme} />
+            <ThemeSwitcher/>
           </NavStyled>
         </HeaderContainer>
       </Default>

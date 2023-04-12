@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Default } from 'components/Media/Media';
 import { Loader } from 'components/Loader/Loader';
 import Aside from 'components/Aside/Aside';
+import { Header } from 'components/Header/Header';
+import AuthNav from 'components/AuthNavigation/AuthNav';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -40,26 +42,30 @@ const HomePage = () => {
     <>
       {currentUser ? (
         <>
+          <Header />
           <TasksPage />
           <Aside />
         </>
       ) : (
-        <ContainerHome>
-          <div id={css['rectangle']}>
-            Please sign in or sign up to start !<span></span>
-          </div>
-          <Default>
-            <div className={css.pen}>
-              <div className={css.bodypen}>
-                <div className={css.whitestripe}></div>
-                <div className={css.blackstripe}></div>
-              </div>
-              <div className={css.headpen}>
-                <div className={css.mine}></div>
-              </div>
+        <>
+          <AuthNav />
+          <ContainerHome>
+            <div id={css['rectangle']}>
+              Please sign in or sign up to start !<span></span>
             </div>
-          </Default>
-        </ContainerHome>
+            <Default>
+              <div className={css.pen}>
+                <div className={css.bodypen}>
+                  <div className={css.whitestripe}></div>
+                  <div className={css.blackstripe}></div>
+                </div>
+                <div className={css.headpen}>
+                  <div className={css.mine}></div>
+                </div>
+              </div>
+            </Default>
+          </ContainerHome>
+        </>
       )}
     </>
   );

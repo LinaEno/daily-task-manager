@@ -21,26 +21,3 @@ ul {
   margin: 0;
 }
 
-/* h3,
-img {
-  color: rgb(105, 105, 168);
-  font-weight: 700;
-  font-size: 60px;
-  text-align: center;
-  margin-top: 0;
-  animation: hueRotate 6s ease-in-out 3s infinite;
-}
-
-@keyframes hueRotate {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-
-  50% {
-    filter: hue-rotate(-120deg);
-  }
-
-  100% {
-    filter: hue-rotate(0deg);
-  }
-} */

@@ -1,5 +1,9 @@
 import {
   CheckBox,
+  CloseButton,
+  Container,
+  Title,
+  TitleDesk,
   Wrapper,
   WrapperButton,
   WrapperTitle,
@@ -36,7 +40,7 @@ const CompletedTaskSection = () => {
   };
 
   return (
-    <section>
+    <Container>
       <h3>Your comleted tasks</h3>
       {tasks?.length > 0 &&
         tasks.map(task => {
@@ -53,16 +57,16 @@ const CompletedTaskSection = () => {
                 <label htmlFor={task.id}></label>
               </CheckBox>
               <WrapperTitle>
-                <p>Title: {task.title}</p>
-                <p>Description: {task.description}</p>
+                <Title>{task.title}</Title>
+                <TitleDesk>{task.description}</TitleDesk>
               </WrapperTitle>
               <WrapperButton>
-                <button onClick={() => deleteTask(task.id)}>X</button>
+                <CloseButton onClick={() => deleteTask(task.id)}>X</CloseButton>
               </WrapperButton>
             </Wrapper>
           );
         })}
-    </section>
+    </Container>
   );
 };
 

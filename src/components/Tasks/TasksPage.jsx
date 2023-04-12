@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import {
@@ -9,12 +8,18 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
+import brush from '../../img/brush.png';
 import {
   Container,
   Wrapper,
   WrapperTitle,
   WrapperButton,
   CheckBox,
+  Title,
+  TitleDesk,
+  IconClose,
+  CloseButton,
+  EditButton,
 } from './TasksPage.styled';
 import { db } from '../../firebase';
 import { openModalEditTask } from 'redux/global/slice';
@@ -93,16 +98,18 @@ const TasksPage = () => {
                       <label htmlFor={task.id}></label>
                     </CheckBox>
                     <WrapperTitle>
-                      <p>Title: {task.title}</p>
-                      <p>Description: {task.description}</p>
+                      <Title>{task.title}</Title>
+                      <TitleDesk>{task.description}</TitleDesk>
                     </WrapperTitle>
                     <WrapperButton>
-                      <button onClick={() => deleteTask(task.id)}>X</button>
-                      <button
+                      <EditButton
                         onClick={() => dispatch(openModalEditTask(task.id))}
                       >
-                        Edit
-                      </button>
+                        <img src={brush} alt="brush" />
+                      </EditButton>
+                      <CloseButton onClick={() => deleteTask(task.id)}>
+                        <IconClose />
+                      </CloseButton>
                     </WrapperButton>
                   </Wrapper>
                 </>

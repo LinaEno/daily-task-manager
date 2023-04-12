@@ -1,11 +1,9 @@
 import styled from 'styled-components';
+import { ReactComponent as CloseIcon } from '../../img/close.svg';
 
 export const Container = styled.div`
-  /* position: absolute; */
-  width: 700px;
-  height: 600px;
-  /* left: 189px;
-  top: 407; */
+  width: 800px;
+  height: auto;
   margin: 0 auto;
   background: ${({ theme }) => theme.mainBackground};
 `;
@@ -13,13 +11,14 @@ export const Container = styled.div`
 export const CheckBox = styled.div`
   width: 50px;
   position: relative;
+
   label {
     width: 20px;
     height: 20px;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 25px;
+    left: 45px;
     background: #fcfff4;
     background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
     border-radius: 4px;
@@ -49,29 +48,67 @@ export const CheckBox = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-
-  width: 650px;
-  height: auto;
-  /* left: 231px;
-  top: 560px; */
+  justify-content: space-around;
+  width: 100%;
+  min-height: 100px;
+  font-size: 18px;
   margin-top: 30px;
-  background: ${({ theme }) => theme.asideBackground};
-
+  background: #a89fee;
   border-radius: 20px;
 `;
 export const WrapperTitle = styled.div`
   display: flex;
   flex-direction: column;
-  /* position: absolute; */
-  /* padding-left: 100px; */
-  /* padding-top: 20px; */
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
+  padding-right: 110px;
+  padding-top: 25px;
+  padding-left: 60px;
+  padding-bottom: 15px;
 `;
 
 export const WrapperButton = styled.div`
   display: flex;
   flex-direction: column;
-  /* padding-left: 580px; */
-  /* padding-top: 20px; */
-  gap: 5px;
+  justify-content: center;
+  gap: 10px;
+  padding-right: 45px;
+  padding-top: 10px;
+  padding-left: 5px;
+`;
+
+export const Title = styled.p`
+  width: 600px;
+`;
+export const TitleDesk = styled.p`
+  width: 600px;
+  height: auto;
+`;
+export const CloseButton = styled.button`
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+export const IconClose = styled(CloseIcon)`
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+`;
+
+export const EditButton = styled.button`
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 `;

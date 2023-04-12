@@ -15,10 +15,7 @@ import { Header } from 'components/Header/Header';
 import AuthNav from 'components/AuthNavigation/AuthNav';
 
 const HomePage = () => {
-  const { currentUser } = useAuth();
-
-  // const currentUser = useSelector(selectCurrentUser);
-  // const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
   // useEffect(() => {
   //   const listener = onAuthStateChanged(auth, user => {

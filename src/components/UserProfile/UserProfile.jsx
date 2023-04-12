@@ -9,9 +9,11 @@ import {
   Title,
   TopBox,
 } from './UserProfile.styled';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'redux/auth/authSelectors';
 
 const UserProfile = () => {
-  const { currentUser } = useAuth();
+  const currentUser = useSelector(selectCurrentUser);
 
   return (
     <Box>

@@ -3,7 +3,7 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 // import AppBar from './AppBar';
 import { Loader } from './Loader/Loader';
-import { RegistrationPage } from 'pages/RegistrationPage';
+import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage';
 // import TasksPage from 'components/Tasks/TasksPage';
 import { AuthRoute } from 'routes';
 

@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth, db, storage } from '../../firebase';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { setDoc, doc } from 'firebase/firestore';
 import { Loader } from 'components/Loader/Loader';
 import { createAccount } from 'redux/auth/authOperation';
 import { useDispatch, useSelector } from 'react-redux';

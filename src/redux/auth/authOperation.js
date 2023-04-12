@@ -51,49 +51,6 @@ export const createAccount = createAsyncThunk(
   }
 );
 
-// export const updateUserProfile = createAsyncThunk(
-//   'auth/updateProfile',
-//   async ({ displayName, photoFile }, { getState, rejectWithValue }) => {
-//     try {
-//       const currentUser = auth.currentUser;
-//       if (!currentUser) {
-//         throw new Error('User not logged in');
-//       }
-
-//       const updatedFields = {};
-//       if (displayName) {
-//         updatedFields.displayName = displayName;
-//       }
-//       if (photoFile) {
-//         const storageRef = ref(
-//           storage,
-//           `images/${Date.now()}_${photoFile.name}`
-//         );
-//         const snapshot = await uploadBytes(storageRef, photoFile);
-//         const downloadURL = await getDownloadURL(snapshot.ref);
-//         updatedFields.photoURL = downloadURL;
-//       }
-
-//       await currentUser.updateProfile(updatedFields);
-//       await updateDoc(doc(db, 'users', currentUser.uid), {
-//         displayName: displayName || currentUser.displayName,
-//         photoURL: updatedFields.photoURL || currentUser.photoURL,
-//       });
-
-//       // update redux state
-//       const currentUserUid = getState().auth.currentUser.uid;
-//       const updatedUserData = {
-//         uid: currentUserUid,
-//         displayName: displayName || currentUser.displayName,
-//         photoURL: updatedFields.photoURL || currentUser.photoURL,
-//       };
-//       dispatch(updateCurrentUser(updatedUserData));
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {

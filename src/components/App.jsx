@@ -1,10 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-// import AppBar from './AppBar';
 import { Loader } from './Loader/Loader';
 import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage';
-// import TasksPage from 'components/Tasks/TasksPage';
 import { AuthRoute } from 'routes';
 
 import CreateTaskPage from 'pages/CreateTaskPage';
@@ -28,7 +26,7 @@ export function App() {
 
   const normalizedTheme = { ...theme, ...colors[themeTitle] };
   return (
-       <ThemeProvider theme={normalizedTheme}>
+    <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -49,23 +47,3 @@ export function App() {
     </ThemeProvider>
   );
 }
-
-//  return (
-//    <>
-//      <AppBar />
-//      <RegistrationPage />
-//      {/* {stateChange ? (
-//         <Loader />
-//       ) : (
-//         <Suspense fallback={<Loader />}>
-//           <Routes>
-//             <Route path="/" element={<HomePage />} />
-//             <Route path="register" element={<RegistrationPage />} />
-//             {/* <Route path="register" element={<Form />} /> */}
-//      {/* <Route path="login" element={<LoginPage />} />
-//             <Route path="*" element={<PageNotFound404 />} />
-//           </Routes>
-//         </Suspense>
-//       )} */}
-//    </>
-//  );

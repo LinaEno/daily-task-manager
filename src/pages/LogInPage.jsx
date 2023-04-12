@@ -1,38 +1,23 @@
 import { Container } from 'components/App.styled';
-
-import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { login } from 'redux/auth/authOperation';
-import { useDispatch } from 'react-redux';
-import { loginTaskState } from 'redux/tasks/tasksSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoading } from 'redux/auth/authSelectors';
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    dispatch(loginTaskState());
-
     navigate('/');
   };
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     const userCredential = signInWithEmailAndPassword(auth, email, password);
-  //     const user = userCredential.user;
-  //     navigate('/');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <Container>

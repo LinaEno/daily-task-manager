@@ -35,7 +35,7 @@ const ModalEditUserProfile = () => {
     };
 
     if (updatePhotoFile) {
-      const storageRef = ref(storage, `images/${currentUserUid}/avatar.jpg`);
+      const storageRef = ref(storage, `images/${currentUserUid}/${Date.now()}`);
       await uploadBytes(storageRef, updatePhotoFile);
       const downloadURL = await getDownloadURL(storageRef);
 
@@ -62,7 +62,7 @@ const ModalEditUserProfile = () => {
       <ModalForm onSubmit={handleSaveChanges}>
         <Title>Add changes to your profile</Title>
         <ModalLabel>
-          Title
+          Change name
           <TextArea
             type="text"
             name="updateName"

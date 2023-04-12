@@ -161,7 +161,6 @@ export function RegistrationPage() {
                 />
                 <label className={css.register__label}>Name</label>
               </div>
-
               <div className={css.register__inputbox}>
                 <input
                   className={css.register__input}

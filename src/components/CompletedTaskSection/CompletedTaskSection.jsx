@@ -2,6 +2,7 @@ import {
   CheckBox,
   CloseButton,
   Container,
+  IconClose,
   Title,
   TitleDesk,
   Wrapper,
@@ -61,7 +62,10 @@ const CompletedTaskSection = () => {
                 <TitleDesk>{task.description}</TitleDesk>
               </WrapperTitle>
               <WrapperButton>
-                <CloseButton onClick={() => deleteTask(task.id)}>X</CloseButton>
+                <CloseButton onClick={() => deleteTask(task.id)}>
+                  {' '}
+                  <IconClose />
+                </CloseButton>
               </WrapperButton>
             </Wrapper>
           );

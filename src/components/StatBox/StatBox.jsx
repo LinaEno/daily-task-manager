@@ -18,7 +18,9 @@ export const StatBox = ({ activePercentage, completedPercentage }) => {
         <StatTitleWrap>
           <StatTitle>Completed</StatTitle>
           <StatText>
-            <NumberSpan>{completedPercentage.toFixed(0)}%</NumberSpan>
+            <NumberSpan>
+              {completedPercentage ? completedPercentage.toFixed(0) : 0}%
+            </NumberSpan>
             <TextSpan>of total amounts</TextSpan>
           </StatText>
         </StatTitleWrap>
@@ -28,7 +30,9 @@ export const StatBox = ({ activePercentage, completedPercentage }) => {
         <StatTitleWrap>
           <StatTitle>Active</StatTitle>
           <StatText>
-            <NumberSpan>{activePercentage.toFixed(0)}%</NumberSpan>
+            <NumberSpan>
+              {activePercentage ? activePercentage.toFixed(0) : 0}%
+            </NumberSpan>
             <TextSpan>of total amounts</TextSpan>
           </StatText>
         </StatTitleWrap>

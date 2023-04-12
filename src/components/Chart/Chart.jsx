@@ -41,7 +41,7 @@ export const Chart = ({ activePercentage, completedPercentage }) => {
   return (
     <ChartContainer>
       <DoughnutBox data={data} />
-      <ChartLabel>50M</ChartLabel>
+      <ChartLabel>Tasks</ChartLabel>
     </ChartContainer>
   );
 };

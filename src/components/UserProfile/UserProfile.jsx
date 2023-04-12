@@ -32,8 +32,8 @@ const UserProfile = () => {
         </TopBox>
         <BottomBox>
           <Img src={currentUser?.photoURL} alt="user" width={50} />
-          <Signature>{currentUser.displayName}</Signature>
-          <Signature>Add your mood</Signature>
+          <Signature>{currentUser?.displayName}</Signature>
+          <Signature>{currentUser?.mood}</Signature>
         </BottomBox>
       </Box>
       {isModalEditProfileOpen && (

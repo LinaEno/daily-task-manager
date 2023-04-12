@@ -10,26 +10,26 @@ import {
   WrapBox,
 } from './StatBox.styled';
 
-export const StatBox = () => {
+export const StatBox = ({ activePercentage, completedPercentage }) => {
   return (
     <WrapBox>
       <StatWrap>
         <ColorBoxD></ColorBoxD>
         <StatTitleWrap>
-          <StatTitle>Designing</StatTitle>
+          <StatTitle>Completed</StatTitle>
           <StatText>
-            <NumberSpan>50%</NumberSpan>
-            <TextSpan>of total time</TextSpan>
+            <NumberSpan>{completedPercentage.toFixed(0)}%</NumberSpan>
+            <TextSpan>of total amounts</TextSpan>
           </StatText>
         </StatTitleWrap>
       </StatWrap>
       <StatWrap>
         <ColorBoxR></ColorBoxR>
         <StatTitleWrap>
-          <StatTitle>Research</StatTitle>
+          <StatTitle>Active</StatTitle>
           <StatText>
-            <NumberSpan>30%</NumberSpan>
-            <TextSpan>of total design</TextSpan>
+            <NumberSpan>{activePercentage.toFixed(0)}%</NumberSpan>
+            <TextSpan>of total amounts</TextSpan>
           </StatText>
         </StatTitleWrap>
       </StatWrap>

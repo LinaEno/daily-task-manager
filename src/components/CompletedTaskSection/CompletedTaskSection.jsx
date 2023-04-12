@@ -10,7 +10,7 @@ import {
 } from 'components/Tasks/TasksPage.styled';
 import { db } from '../../firebase';
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 
@@ -18,7 +18,7 @@ const CompletedTaskSection = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
   const [tasks, setTasks] = useState([]);
 
-  const getComletedTasks = useCallback(async () => {
+  const getCompletedTasks = useCallback(async () => {
     const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
     const querySnapshot = await getDocs(userTasksRef);
     const tasksData = querySnapshot.docs
@@ -29,8 +29,8 @@ const CompletedTaskSection = () => {
 
   useEffect(() => {
     if (!currentUserUid) return;
-    getComletedTasks();
-  }, [currentUserUid, getComletedTasks]);
+    getCompletedTasks();
+  }, [currentUserUid, getCompletedTasks]);
 
   const deleteTask = async taskId => {
     const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');

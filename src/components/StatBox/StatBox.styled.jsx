@@ -62,7 +62,6 @@ export const NumberSpan = styled.span`
 `;
 
 export const TextSpan = styled.span`
-  /* font-family: TT Commons; */
   color: #bfbfbf;
   line-height: 18.4px;
 `;

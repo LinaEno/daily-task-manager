@@ -5,13 +5,7 @@ export const Box = styled.div`
   padding: 16px;
   margin: 16px;
   background-color: #ffffff;
-  box-shadow: 0px 7.56px 47.88px rgba(0, 0, 0, 0.04);
   border-radius: 25px;
-`;
-
-export const TopBox = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
 `;
 
 export const BottomBox = styled.div`
@@ -28,7 +22,7 @@ export const BottomBox = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-weight: 600;
+  font-weight: 700;
   font-size: 20px;
   line-height: 25.2px;
   color: #393d54;
@@ -38,9 +32,4 @@ export const Title = styled.h2`
   @media screen and (min-width: 1280px) {
     text-align: left;
   }
-`;
-
-export const Btn = styled.button`
-  border-style: none;
-  background-color: transparent;
 `;

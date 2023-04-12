@@ -18,6 +18,9 @@ const authSlice = createSlice({
     clearCurrentUser: state => {
       state.currentUser = null;
     },
+    updateCurrentUser: (state, action) => {
+      state.currentUser = { ...state.currentUser, ...action.payload };
+    },
   },
   extraReducers: builder => {
     builder
@@ -53,6 +56,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCurrentUser, clearCurrentUser } = authSlice.actions;
+export const { setCurrentUser, clearCurrentUser, updateCurrentUser } =
+  authSlice.actions;
 
 export const authReducer = authSlice.reducer;

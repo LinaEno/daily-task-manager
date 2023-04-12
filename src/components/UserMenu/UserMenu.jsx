@@ -1,7 +1,5 @@
-import { ContainerWelcome, WelcomeMessage } from 'components/App.styled';
+import { ContainerWelcome } from 'components/App.styled';
 import { Button } from 'components/ContactList/ContactList.styled';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase';
 import useAuth from 'hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

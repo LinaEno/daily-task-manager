@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isModalEditTaskOpen: false,
+  isModalEditProfileOpen: false,
   isModalLogoutOpen: false,
   editingTaskId: null,
   themeTitle: 'light',
@@ -15,6 +16,9 @@ const globalSlice = createSlice({
       state.isModalEditTaskOpen = true;
       state.editingTaskId = payload;
     },
+    openModalEditProfile(state) {
+      state.isModalEditProfileOpen = true;
+    },
     openModalLogout(state) {
       state.isModalLogoutOpen = true;
     },
@@ -22,6 +26,7 @@ const globalSlice = createSlice({
       state.isModalEditTaskOpen = false;
       state.isModalLogoutOpen = false;
       state.editingTaskId = null;
+      state.isModalEditProfileOpen = false;
     },
     toggleThemeTitle(state) {
       state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
@@ -29,7 +34,12 @@ const globalSlice = createSlice({
   },
 });
 
-export const { openModalEditTask, openModalLogout, closeModal, toggleThemeTitle } =
-  globalSlice.actions;
+export const {
+  openModalEditTask,
+  openModalLogout,
+  closeModal,
+  toggleThemeTitle,
+  openModalEditProfile,
+} = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;

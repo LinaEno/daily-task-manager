@@ -15,7 +15,7 @@ import cloud2 from '../../img/register/cloud2.png';
 import cloud1 from '../../img/register/cloud1.png';
 import balloon1 from '../../img/register/balloon1.png';
 import balloon2 from '../../img/register/balloon2.png';
-import { selectLoading } from 'redux/tasks/selectors';
+import { selectLoading } from 'redux/auth/authSelectors';
 
 export function RegistrationPage() {
   const navigate = useNavigate();

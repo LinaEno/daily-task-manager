@@ -55,7 +55,7 @@ export const Wrapper = styled.div`
   /* left: 231px;
   top: 560px; */
   margin-top: 30px;
-  background: #a89fee;
+  background: ${({ theme }) => theme.bgcButton};
 
   border-radius: 20px;
 `;

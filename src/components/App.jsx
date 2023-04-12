@@ -23,6 +23,9 @@ const LoginPage = lazy(() => import('pages/LogInPage'));
 const PageNotFound404 = lazy(() => import('pages/Page404/Page404'));
 
 export function App() {
+  const [themeTitle] = useState('light');
+
+  const normalizedTheme = { ...theme, ...colors[themeTitle] };
   return (
     <>
       <Layout />
@@ -31,14 +34,6 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="register" element={<RegistrationPage />} />
-          {/* <Route
-              path="contacts"
-              element={
-                <AuthRoute>
-                  <TasksPage />
-                </AuthRoute>
-              }
-            /> */}
           <Route
             path="add"
             element={

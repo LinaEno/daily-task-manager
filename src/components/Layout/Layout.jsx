@@ -9,9 +9,9 @@ import { Header } from 'components/UserMenu/Header';
 import AuthNav from 'components/AuthNavigation/AuthNav';
 
 export const Layout = () => {
-  const [themeTitle, setThemeTitle] = useState('light')
-  
-  const normalizedTheme = { ...theme, ...colors[themeTitle] }
+  const [themeTitle, setThemeTitle] = useState('light');
+
+  const normalizedTheme = { ...theme, ...colors[themeTitle] };
 
   const switchTheme = () => {
     setThemeTitle(themeTitle === 'light' ? 'dark' : 'light');
@@ -19,11 +19,14 @@ export const Layout = () => {
 
   const { currentUser } = useAuth();
 
-
   return (
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
-      {currentUser ? <Header switchTheme={switchTheme} themeTitle={themeTitle}/> : <AuthNav />}
+      {currentUser ? (
+        <Header switchTheme={switchTheme} themeTitle={themeTitle} />
+      ) : (
+        <AuthNav />
+      )}
     </ThemeProvider>
   );
 };

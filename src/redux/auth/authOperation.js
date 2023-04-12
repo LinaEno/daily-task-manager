@@ -38,6 +38,7 @@ export const createAccount = createAsyncThunk(
         displayName: userName,
         email,
         photoURL: downloadURL,
+        mood: user.mood,
       });
       return user.uid;
     } catch (error) {

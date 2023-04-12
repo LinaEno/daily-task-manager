@@ -14,6 +14,7 @@ import { selectCurrentUser } from 'redux/auth/authSelectors';
 
 const UserProfile = () => {
   const currentUser = useSelector(selectCurrentUser);
+  console.log(currentUser);
 
   return (
     <Box>

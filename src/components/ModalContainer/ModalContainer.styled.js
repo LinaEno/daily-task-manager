@@ -43,11 +43,11 @@ export const ModalBox = styled.div`
   padding: 40px;
   background-color: #fff;
   border-radius: 20px;
-  background: linear-gradient(
-    0deg,
-    rgba(34, 110, 195, 1) 0%,
-    rgba(253, 251, 45, 1) 100%
-  );
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
 `;
 
 export const CloseButton = styled.button`

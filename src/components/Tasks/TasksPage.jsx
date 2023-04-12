@@ -128,7 +128,6 @@ import { db } from '../../firebase';
 import { openModalEditTask } from 'redux/global/slice';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import ModalEditTask from 'components/ModalEditTask/ModalEditTask';
-import { Progress } from 'components/ProgressBox/ProgressBox';
 import {
   selectEditingTaskId,
   selectIsModalEditTaskOpen,
@@ -141,20 +140,19 @@ const TasksPage = () => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(selectIsModalEditTaskOpen);
 
-  const getAllTasks = useCallback(async () => {
+  const getAllActiveTasks = useCallback(async () => {
     const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
     const querySnapshot = await getDocs(userTasksRef);
-    const tasksData = [];
-    querySnapshot.forEach(doc => {
-      tasksData.push(doc.data());
-    });
+    const tasksData = querySnapshot.docs
+      .map(doc => doc.data())
+      .filter(task => !task.completed);
     setTasks(tasksData);
   }, [currentUserUid]);
 
   useEffect(() => {
     if (!currentUserUid) return;
-    getAllTasks();
-  }, [currentUserUid, getAllTasks]);
+    getAllActiveTasks();
+  }, [currentUserUid, getAllActiveTasks]);
 
   const deleteTask = async taskId => {
     const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
@@ -221,7 +219,10 @@ const TasksPage = () => {
         </section>
         {isModalOpen && (
           <ModalContainer>
-            <ModalEditTask task={taskToEdit} getAllTasks={getAllTasks} />
+            <ModalEditTask
+              task={taskToEdit}
+              getAllActiveTasks={getAllActiveTasks}
+            />
           </ModalContainer>
         )}
       </Container>

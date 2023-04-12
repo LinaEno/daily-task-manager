@@ -98,14 +98,11 @@ import {
 //     dispatch(closeModal());
 //   };
 
-const ModalEditTask = ({ task, getAllTasks }) => {
+const ModalEditTask = ({ task, getAllActiveTasks }) => {
   const [updateTitle, setUpdateTitle] = useState(task.title);
   const [updateDescription, setUpdateDescription] = useState(task.description);
   const currentUserUid = useSelector(selectCurrentUserUid);
   const dispatch = useDispatch();
-
-  console.log(task);
-  console.log(task.id);
 
   const handleSaveChanges = async event => {
     event.preventDefault();
@@ -120,7 +117,7 @@ const ModalEditTask = ({ task, getAllTasks }) => {
       task.id
     );
     await updateDoc(taskRef, updatedFields);
-    await getAllTasks();
+    await getAllActiveTasks();
 
     dispatch(closeModal());
   };

@@ -4,6 +4,7 @@ const initialState = {
   isModalEditTaskOpen: false,
   isModalLogoutOpen: false,
   editingTaskId: null,
+  themeTitle: 'light',
 };
 
 const globalSlice = createSlice({
@@ -22,10 +23,13 @@ const globalSlice = createSlice({
       state.isModalLogoutOpen = false;
       state.editingTaskId = null;
     },
+    toggleThemeTitle(state) {
+      state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
+    },
   },
 });
 
-export const { openModalEditTask, openModalLogout, closeModal } =
+export const { openModalEditTask, openModalLogout, closeModal, toggleThemeTitle } =
   globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;

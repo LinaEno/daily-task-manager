@@ -18,8 +18,6 @@ const UserProfile = () => {
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const isModalEditProfileOpen = useSelector(selectEditProfileModal);
-  console.log(isModalEditProfileOpen);
-  console.log(currentUser);
 
   return (
     <>
@@ -33,7 +31,7 @@ const UserProfile = () => {
         <BottomBox>
           <Img src={currentUser?.photoURL} alt="user" width={50} />
           <Signature>{currentUser?.displayName}</Signature>
-          <Signature>{currentUser?.mood}</Signature>
+          {/* <Signature>{currentUser?.mood}</Signature> */}
         </BottomBox>
       </Box>
       {isModalEditProfileOpen && (

@@ -63,7 +63,6 @@ const CompletedTaskSection = () => {
               </WrapperTitle>
               <WrapperButton>
                 <CloseButton onClick={() => deleteTask(task.id)}>
-                  {' '}
                   <IconClose />
                 </CloseButton>
               </WrapperButton>

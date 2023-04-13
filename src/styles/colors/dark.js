@@ -8,6 +8,7 @@ export const dark = {
   textGrayGraph: '#BFBFBF',
   bgcButton: '#5949ce',
   colorButton: '#F5F5F5',
+  colorGrey: '#808080',
 };
 
 //box-shadow: ${({ theme }) => theme.shadows.regular};

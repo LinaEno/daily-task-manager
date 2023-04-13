@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from '../../img/close.svg';
 
 export const Container = styled.div`
-  width: 800px;
+  /* width: 800px; */
+  width: 700px;
   height: auto;
   margin: 0 auto;
   background: ${({ theme }) => theme.mainBackground};
@@ -53,9 +54,22 @@ export const Wrapper = styled.div`
   min-height: 100px;
   font-size: 18px;
   margin-top: 30px;
-  background: #a89fee;
+  /* background: #a89fee; */
+  background: ${({ theme }) => theme.asideBackground};
   border-radius: 20px;
 `;
+
+export const WrapperCompleted = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 100px;
+  font-size: 18px;
+  margin-top: 30px;
+  background: ${({ theme }) => theme.colorGrey};
+  border-radius: 20px;
+`;
+
 export const WrapperTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -78,10 +92,12 @@ export const WrapperButton = styled.div`
 `;
 
 export const Title = styled.p`
-  width: 600px;
+  /* width: 600px; */
+  width: 500px;
 `;
 export const TitleDesk = styled.p`
-  width: 600px;
+  /* width: 600px; */
+  width: 500px;
   height: auto;
 `;
 export const CloseButton = styled.button`

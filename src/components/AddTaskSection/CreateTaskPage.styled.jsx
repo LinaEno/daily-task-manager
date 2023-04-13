@@ -4,6 +4,8 @@ export const Section = styled.section`
   width: 700px;
   height: auto;
   margin: 0 auto;
+  margin-bottom: 70px;
+  margin-top: 50px;
 `;
 
 export const AddTitle = styled.h3`

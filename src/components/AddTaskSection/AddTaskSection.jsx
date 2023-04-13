@@ -8,6 +8,7 @@ import {
   LabelBox,
   Section,
   TextArea,
+  Title,
 } from 'components/AddTaskSection/CreateTaskPage.styled';
 import { db } from '../../firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';

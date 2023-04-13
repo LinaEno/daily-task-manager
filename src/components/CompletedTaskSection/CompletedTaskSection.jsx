@@ -7,6 +7,7 @@ import {
   TitleDesk,
   Wrapper,
   WrapperButton,
+  WrapperCompleted,
   WrapperTitle,
 } from 'components/Tasks/TasksPage.styled';
 import { db } from '../../firebase';
@@ -14,6 +15,7 @@ import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import { AddTitle } from 'components/AddTaskSection/CreateTaskPage.styled';
 
 const CompletedTaskSection = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
@@ -42,11 +44,11 @@ const CompletedTaskSection = () => {
 
   return (
     <Container>
-      <h3>Your comleted tasks</h3>
+      <AddTitle>Your comleted tasks</AddTitle>
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (
-            <Wrapper key={task.id}>
+            <WrapperCompleted key={task.id}>
               <CheckBox>
                 <input
                   type="checkbox"
@@ -66,7 +68,7 @@ const CompletedTaskSection = () => {
                   <IconClose />
                 </CloseButton>
               </WrapperButton>
-            </Wrapper>
+            </WrapperCompleted>
           );
         })}
     </Container>

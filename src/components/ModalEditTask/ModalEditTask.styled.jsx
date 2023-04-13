@@ -12,13 +12,15 @@ export const ModalForm = styled.form`
 `;
 
 export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-size: 30px;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: #000;
 `;
 
 export const ModalLabel = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +34,7 @@ export const ModalLabel = styled.label`
 export const TextArea = styled.textarea`
   width: 90%;
   border: none;
-  box-shadow: 2px 2px 14px #032751;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   outline: none;
   resize: none;
   border-radius: 6px;
@@ -42,9 +44,15 @@ export const TextArea = styled.textarea`
 export const ModalBtn = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: #000;
+  padding: 10px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 10px #fff;
+  border-radius: 10px;
+  cursor: pointer;
 
-  &:hover {
-    transform: scale(1.5, 1);
-    text-shadow: 0px 0px 14px rgba(253, 251, 45, 1);
+  &:hover,
+  :focus {
+    transform: scale(1.1);
   }
 `;

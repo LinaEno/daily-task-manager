@@ -1,6 +1,7 @@
 import {
   AddBtn,
   AddForm,
+  AddTitle,
   ChackInput,
   ChackName,
   Check,
@@ -47,7 +48,7 @@ const AddTaskSection = () => {
   };
   return (
     <Section>
-      <h3>Add your task</h3>
+      <AddTitle>Add your task</AddTitle>
       <AddForm onSubmit={handleCreateTask}>
         <LabelBox>
           Title

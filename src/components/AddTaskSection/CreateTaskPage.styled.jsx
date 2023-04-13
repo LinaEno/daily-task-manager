@@ -6,6 +6,12 @@ export const Section = styled.section`
   margin: 0 auto;
 `;
 
+export const AddTitle = styled.h3`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  text-align: center;
+`;
+
 export const TextArea = styled.textarea`
   border: none;
   outline: none;

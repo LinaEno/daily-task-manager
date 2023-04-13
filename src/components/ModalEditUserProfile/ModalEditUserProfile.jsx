@@ -26,13 +26,16 @@ const ModalEditUserProfile = () => {
   const [, setUpdatePhotoURL] = useState('');
   const currentUserUid = useSelector(selectCurrentUserUid);
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUserUid);
 
   const handleSaveChanges = async event => {
     event.preventDefault();
 
-    const updatedFields = {
-      displayName: updateName,
-    };
+    let updatedFields = {};
+
+    if (updateName !== '' && updateName !== currentUser.displayName) {
+      updatedFields.displayName = updateName;
+    }
 
     if (updatePhotoFile) {
       const storageRef = ref(storage, `images/${currentUserUid}/${Date.now()}`);

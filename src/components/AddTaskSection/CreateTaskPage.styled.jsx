@@ -8,13 +8,12 @@ export const Section = styled.section`
 
 export const TextArea = styled.textarea`
   border: none;
-
   outline: none;
   resize: none;
   border-radius: 6px;
   padding: 10px;
   border-radius: 10px;
-  background: #a89fee;
+  background: ${({ theme }) => theme.asideBackground};
 `;
 
 export const AddForm = styled.form`
@@ -44,9 +43,9 @@ export const AddBtn = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   padding: 10px;
-  border: 1px solid #a89fee;
-  box-shadow: 2px 2px 10px #a89fee;
+  box-shadow: ${({ theme }) => theme.shadows.small};
   border-radius: 10px;
+  background: ${({ theme }) => theme.bgcButton};
   cursor: pointer;
 
   &:hover,

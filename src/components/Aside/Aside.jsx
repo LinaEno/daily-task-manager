@@ -1,4 +1,5 @@
 import { Progress } from 'components/ProgressBox/ProgressBox';
+import Quote from 'components/Quote/Quote';
 import UserProfile from 'components/UserProfile/UserProfile';
 
 const Aside = () => {
@@ -6,6 +7,7 @@ const Aside = () => {
     <aside>
       <UserProfile />
       <Progress />
+      <Quote />
     </aside>
   );
 };

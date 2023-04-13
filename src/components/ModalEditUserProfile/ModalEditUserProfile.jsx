@@ -10,7 +10,10 @@ import { db, storage } from '../../firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import {
+  selectCurrentUser,
+  selectCurrentUserUid,
+} from 'redux/auth/authSelectors';
 import { closeModal } from 'redux/global/slice';
 import {
   getDownloadURL,
@@ -26,7 +29,7 @@ const ModalEditUserProfile = () => {
   const [, setUpdatePhotoURL] = useState('');
   const currentUserUid = useSelector(selectCurrentUserUid);
   const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUserUid);
+  const currentUser = useSelector(selectCurrentUser);
 
   const handleSaveChanges = async event => {
     event.preventDefault();

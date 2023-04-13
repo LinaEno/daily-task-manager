@@ -22,11 +22,13 @@ export const BottomBox = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   border: 1px solid #a89fee;
   box-shadow: 0px 0px 14px #a89fee;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const Title = styled.p`

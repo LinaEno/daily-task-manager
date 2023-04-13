@@ -16,9 +16,9 @@ html {
     
   }
 
-  #root {
+#root {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -30,13 +30,13 @@ header {
 }
 
 main {
-  grid-area: 1 / 2 / 2 / 6;
+  grid-area: 1 / 2 / 2 / 5;
 }
 
   aside {
     background-color: ${({ theme }) => theme.asideBackground};
     color: ${({ theme }) => theme.text};
-    grid-area: 1 / 6 / 2 / 8;
+    grid-area: 1 / 5 / 2 / 7;
   }
 
   h1,

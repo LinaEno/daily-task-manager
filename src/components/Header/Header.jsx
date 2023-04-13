@@ -15,15 +15,17 @@ import {
 } from './Header.styled';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/authOperation';
 import useAuth from 'hooks/useAuth';
 import { Mobile, Default } from 'components/Media/Media';
 import { BsList, BsX, BsBoxArrowRight } from 'react-icons/bs';
 import { TbLayoutGrid, TbLayoutGridAdd } from 'react-icons/tb';
+import { selectCurrentUser } from 'redux/auth/authSelectors';
 
 export const Header = () => {
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
+  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -45,12 +45,12 @@ export const AddBtn = styled.button`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   padding: 10px;
   border: 1px solid #a89fee;
+  box-shadow: 2px 2px 10px #a89fee;
   border-radius: 10px;
   cursor: pointer;
 
   &:hover,
   :focus {
-    /* box-shadow: 0px 0px 14px #a89fee; */
     transform: scale(1.1);
   }
 `;

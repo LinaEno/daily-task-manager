@@ -1,8 +1,8 @@
 import { openModalEditProfile } from 'redux/global/slice';
 import brush from '../../img/brush.png';
 import {
-  BottomBox,
   Box,
+  BottomBox,
   Img,
   Signature,
   Title,

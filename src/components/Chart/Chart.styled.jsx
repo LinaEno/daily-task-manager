@@ -11,14 +11,22 @@ export const ChartContainer = styled.div`
   position: relative;
   display: grid;
   place-items: center;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
+  margin: 20px auto 0;
+
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 10%;
+    right: 10%;
+  }
 `;
 
 export const ChartLabel = styled.p`
   position: absolute;
   margin: 0;
-  /* z-index: -1; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

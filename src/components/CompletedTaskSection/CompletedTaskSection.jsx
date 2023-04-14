@@ -1,13 +1,12 @@
 import {
   CheckBox,
   CloseButton,
-  Container,
   IconClose,
   Title,
   TitleDesk,
   WrapperButton,
-  WrapperCompleted,
   WrapperTitle,
+  SectionCompleted,
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';
@@ -32,12 +31,12 @@ const CompletedTaskSection = () => {
   };
 
   return (
-    <Container>
+    <SectionCompleted>
       <AddTitle>Your comleted tasks</AddTitle>
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (
-            <WrapperCompleted key={task.id}>
+            <Wrapper key={task.id}>
               <CheckBox>
                 <input
                   type="checkbox"
@@ -57,10 +56,10 @@ const CompletedTaskSection = () => {
                   <IconClose />
                 </CloseButton>
               </WrapperButton>
-            </WrapperCompleted>
+            </Wrapper>
           );
         })}
-    </Container>
+    </SectionCompleted>
   );
 };
 

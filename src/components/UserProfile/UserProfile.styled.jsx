@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Box = styled.div`
-  padding: 16px;
-  margin: 16px;
+  /* padding: 16px;
+  margin: 16px; */
+  padding: 30px;
+  margin: 30px;
   background-color: #ffffff;
   border-radius: 25px;
 `;
@@ -10,6 +12,7 @@ export const Box = styled.div`
 export const TopBox = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
 `;
 
 export const BottomBox = styled.div`
@@ -26,9 +29,9 @@ export const Img = styled.img`
   height: 200px;
   border: 1px solid #a89fee;
   box-shadow: 0px 0px 14px #a89fee;
-  /* border-radius: 20px; */
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.p`

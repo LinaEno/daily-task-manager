@@ -13,13 +13,16 @@ import {
 import { db } from '../../firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import { requestAllTasks } from 'redux/auth/authOperation';
 
 const AddTaskSection = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [completed, setCompleted] = useState(false);
+
   const currentUserUid = useSelector(selectCurrentUserUid);
 
   const handleCreateTask = async event => {
@@ -35,6 +38,7 @@ const AddTaskSection = () => {
       const newTaskId = newTaskRef.id;
       const newTask = { ...task, id: newTaskId };
       await setDoc(newTaskRef, newTask);
+      dispatch(requestAllTasks());
       reset();
       event.target.reset();
       return newTask;

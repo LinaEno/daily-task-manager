@@ -5,41 +5,30 @@ import {
   IconClose,
   Title,
   TitleDesk,
-  Wrapper,
   WrapperButton,
   WrapperCompleted,
   WrapperTitle,
 } from 'components/Tasks/TasksPage.styled';
-import { db } from '../../firebase';
-import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
-import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { AddTitle } from 'components/AddTaskSection/CreateTaskPage.styled';
+import { deleteTasks, requestAllTasks } from 'redux/auth/authOperation';
 
 const CompletedTaskSection = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
-  const [tasks, setTasks] = useState([]);
-
-  const getCompletedTasks = useCallback(async () => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const querySnapshot = await getDocs(userTasksRef);
-    const tasksData = querySnapshot.docs
-      .map(doc => doc.data())
-      .filter(task => task.completed);
-    setTasks(tasksData);
-  }, [currentUserUid]);
+  const tasks = useSelector(state => state.auth.completedTasks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!currentUserUid) return;
-    getCompletedTasks();
-  }, [currentUserUid, getCompletedTasks]);
+
+    dispatch(requestAllTasks());
+  }, [currentUserUid, dispatch]);
 
   const deleteTask = async taskId => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const taskRef = doc(userTasksRef, taskId);
-    await deleteDoc(taskRef);
-    setTasks(prevState => prevState.filter(task => task.id !== taskId));
+    dispatch(deleteTasks(taskId));
   };
 
   return (

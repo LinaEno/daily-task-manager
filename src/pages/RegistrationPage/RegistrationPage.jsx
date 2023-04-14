@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Await, Link, useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { createAccount } from 'redux/auth/authOperation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import cloud1 from '../../img/register/cloud1.png';
 import balloon1 from '../../img/register/balloon1.png';
 import balloon2 from '../../img/register/balloon2.png';
 import { selectLoading } from 'redux/auth/authSelectors';
+import { toast } from 'react-toastify';
 
 export function RegistrationPage() {
   const navigate = useNavigate();
@@ -22,10 +23,16 @@ export function RegistrationPage() {
   const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
-  const handleCreateAccount = e => {
+  const handleCreateAccount = async e => {
     e.preventDefault();
-    dispatch(createAccount({ email, password, userName, file }));
-    navigate('/');
+    try {
+      await dispatch(
+        createAccount({ email, password, userName, file })
+      ).unwrap();
+      navigate('/');
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   const [mousePos1, setMousePos1] = useState({});

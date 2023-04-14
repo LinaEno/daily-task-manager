@@ -6,12 +6,11 @@ import { QuoteAuthor, QuoteText } from './Quote.styled';
 const Quote = () => {
   const [quote, setQuote] = useState([]);
 
-  const getQuote = async () => {
-    const { data } = await axios.get('https://type.fit/api/quotes');
-    setQuote(data);
-  };
-
   useEffect(() => {
+    const getQuote = async () => {
+      const { data } = await axios.get('https://type.fit/api/quotes');
+      setQuote(data);
+    };
     getQuote();
   }, []);
 

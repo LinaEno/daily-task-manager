@@ -1,14 +1,13 @@
 import {
   CheckBox,
   CloseButton,
-  Container,
   IconClose,
   Title,
   TitleDesk,
   Wrapper,
   WrapperButton,
-  WrapperCompleted,
   WrapperTitle,
+  SectionCompleted,
 } from 'components/Tasks/TasksPage.styled';
 import { db } from '../../firebase';
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
@@ -43,12 +42,12 @@ const CompletedTaskSection = () => {
   };
 
   return (
-    <Container>
+    <SectionCompleted>
       <AddTitle>Your comleted tasks</AddTitle>
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (
-            <WrapperCompleted key={task.id}>
+            <Wrapper key={task.id}>
               <CheckBox>
                 <input
                   type="checkbox"
@@ -68,10 +67,10 @@ const CompletedTaskSection = () => {
                   <IconClose />
                 </CloseButton>
               </WrapperButton>
-            </WrapperCompleted>
+            </Wrapper>
           );
         })}
-    </Container>
+    </SectionCompleted>
   );
 };
 

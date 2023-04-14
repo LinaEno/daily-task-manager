@@ -1,4 +1,4 @@
-import { Box, TopBox, Title, BottomBox } from './ProgressBox.styled';
+import { Box, Title } from './ProgressBox.styled';
 import { Chart } from 'components/Chart/Chart';
 import { StatBox } from 'components/StatBox/StatBox';
 import { db } from '../../firebase';
@@ -47,19 +47,15 @@ export const Progress = () => {
 
   return (
     <Box>
-      <TopBox>
-        <Title>Activity Graph</Title>
-      </TopBox>
-      <BottomBox>
-        <StatBox
-          activePercentage={activePercentage}
-          completedPercentage={completedPercentage}
-        />
-        <Chart
-          activePercentage={activePercentage}
-          completedPercentage={completedPercentage}
-        />
-      </BottomBox>
+      <Title>Activity Graph</Title>
+      <StatBox
+        activePercentage={activePercentage}
+        completedPercentage={completedPercentage}
+      />
+      <Chart
+        activePercentage={activePercentage}
+        completedPercentage={completedPercentage}
+      />
     </Box>
   );
 };

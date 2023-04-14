@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  width: 700px;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   margin-bottom: 70px;
@@ -12,6 +12,7 @@ export const AddTitle = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   text-align: center;
+  margin-bottom: 30px;
 `;
 
 export const TextArea = styled.textarea`
@@ -25,11 +26,14 @@ export const TextArea = styled.textarea`
 `;
 
 export const AddForm = styled.form`
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   gap: 30px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
 `;
 
 export const LabelBox = styled.label`
@@ -48,8 +52,9 @@ export const Check = styled.div`
 `;
 
 export const AddBtn = styled.button`
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 15.45px;
   padding: 10px;
   box-shadow: ${({ theme }) => theme.shadows.small};
   border-radius: 10px;
@@ -63,12 +68,13 @@ export const AddBtn = styled.button`
 `;
 
 export const ChackName = styled.label`
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 15.45px;
 `;
 
 export const ChackInput = styled.label`
-  font-size: 2rem;
+  font-size: 1rem;
   display: grid;
   grid-template-columns: 1em auto;
   gap: 0.5em;

@@ -2,24 +2,42 @@ import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from '../../img/close.svg';
 
 export const Container = styled.div`
-  /* width: 800px; */
-  width: 700px;
-  height: auto;
+  height: 100%;
   margin: 0 auto;
-  background: ${({ theme }) => theme.mainBackground};
+  align-items: center;
+  justify-content: center;
+  background: #fffcf1;
+`;
+export const Section = styled.div`
+  width: 90%;
+  height: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding-right: 30px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+`;
+
+export const SectionCompleted = styled.div`
+  width: 90%;
+  height: auto;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid green;
+  padding: 10px;
+  margin: 0 auto;
+  padding-bottom: 30px;
 `;
 
 export const CheckBox = styled.div`
-  width: 50px;
-  position: relative;
-
   label {
     width: 20px;
     height: 20px;
     cursor: pointer;
     position: absolute;
-    top: 25px;
-    left: 45px;
+    /* top: 25px; */
+    top: 40%;
+    left: 10px;
     background: #fcfff4;
     background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
     border-radius: 4px;
@@ -48,57 +66,60 @@ export const CheckBox = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  gap: 20px;
+  width: 90%;
+  padding: 10px;
   min-height: 100px;
   font-size: 18px;
-  margin-top: 30px;
-  /* background: #a89fee; */
+  margin-top: 20px;
+  margin-left: 30px;
   background: ${({ theme }) => theme.asideBackground};
   border-radius: 20px;
-`;
-
-export const WrapperCompleted = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  min-height: 100px;
-  font-size: 18px;
-  margin-top: 30px;
-  background: ${({ theme }) => theme.colorGrey};
-  border-radius: 20px;
+  margin-bottom: 30px;
 `;
 
 export const WrapperTitle = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding-right: 110px;
-  padding-top: 25px;
-  padding-left: 60px;
-  padding-bottom: 15px;
 `;
 
 export const WrapperButton = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding-right: 45px;
-  padding-top: 10px;
-  padding-left: 5px;
+  right: 10px;
+  top: 20%;
 `;
 
 export const Title = styled.p`
-  /* width: 600px; */
-  width: 500px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
 `;
 export const TitleDesk = styled.p`
-  /* width: 600px; */
-  width: 500px;
-  height: auto;
+  width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+`;
+export const TitleMain = styled.h2`
+  font-size: 58px;
+  text-align: center;
+  margin-bottom: 30px;
+`;
+export const TitleTask = styled.h2`
+  font-size: 24px;
+  text-align: left;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-left: 40px;
 `;
 export const CloseButton = styled.button`
   align-items: center;

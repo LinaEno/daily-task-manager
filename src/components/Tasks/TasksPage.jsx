@@ -141,7 +141,7 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
-import brush from '../../img/brush.png';
+import brush from '../../img/brush.svg';
 import {
   Container,
   Wrapper,

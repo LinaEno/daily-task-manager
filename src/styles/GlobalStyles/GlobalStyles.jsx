@@ -31,6 +31,7 @@ header {
 
 main {
   grid-area: 1 / 2 / 2 / 5;
+  
 }
 
   aside {

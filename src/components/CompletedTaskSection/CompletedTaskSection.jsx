@@ -8,6 +8,9 @@ import {
   WrapperButton,
   WrapperTitle,
   SectionCompleted,
+  Section,
+  TitleTask,
+  WrapperCompl,
 } from 'components/Tasks/TasksPage.styled';
 import { db } from '../../firebase';
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
@@ -42,12 +45,12 @@ const CompletedTaskSection = () => {
   };
 
   return (
-    <SectionCompleted>
-      <AddTitle>Your comleted tasks</AddTitle>
+    <Section>
+      <TitleTask>Your comleted tasks</TitleTask>
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (
-            <Wrapper key={task.id}>
+            <WrapperCompl key={task.id}>
               <CheckBox>
                 <input
                   type="checkbox"
@@ -67,10 +70,10 @@ const CompletedTaskSection = () => {
                   <IconClose />
                 </CloseButton>
               </WrapperButton>
-            </Wrapper>
+            </WrapperCompl>
           );
         })}
-    </SectionCompleted>
+    </Section>
   );
 };
 

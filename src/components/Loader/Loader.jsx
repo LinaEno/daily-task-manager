@@ -2,7 +2,7 @@ import css from './Loader.module.css';
 
 export const Loader = () => {
   return (
-    <div>
+    <div className={css.container}>
       <svg
         className={css.pencil}
         viewBox="0 0 200 200"

@@ -16,28 +16,34 @@ html {
     
   }
 
-#root {
+  @media screen and (min-width: 768px) {
+    #root {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    height: 100%;
+    }
+
+    header {
+    display: grid;
+    grid-area: 1 / 1 / 2 / 2;
+    }
+
+    main {
+     grid-area: 1 / 2 / 2 / 8;
+    }
+
+    aside {
+     grid-area: 1 / 8 / 2 / 11;
+    }
   }
 
-header {
-  display: grid;
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-main {
-  grid-area: 1 / 2 / 2 / 5;
-  
-}
 
   aside {
     background-color: ${({ theme }) => theme.asideBackground};
     color: ${({ theme }) => theme.text};
-    grid-area: 1 / 5 / 2 / 7;
   }
 
   h1,

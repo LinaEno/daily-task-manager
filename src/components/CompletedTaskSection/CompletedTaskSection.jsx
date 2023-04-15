@@ -7,17 +7,21 @@ import {
   WrapperButton,
   WrapperTitle,
   SectionCompleted,
+  Wrapper,
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import {
+  selectCompletedTasks,
+  selectCurrentUserUid,
+} from 'redux/auth/authSelectors';
 import { AddTitle } from 'components/AddTaskSection/CreateTaskPage.styled';
 import { deleteTasks, requestAllTasks } from 'redux/auth/authOperation';
 
 const CompletedTaskSection = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
-  const tasks = useSelector(state => state.auth.completedTasks);
+  const tasks = useSelector(selectCompletedTasks);
   const dispatch = useDispatch();
 
   useEffect(() => {

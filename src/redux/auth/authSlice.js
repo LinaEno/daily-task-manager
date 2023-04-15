@@ -5,6 +5,7 @@ import {
   login,
   logout,
   requestAllTasks,
+  toggleComplete,
 } from './authOperation';
 
 const initialState = {
@@ -63,12 +64,8 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(requestAllTasks.fulfilled, (state, action) => {
-        state.completedTasks = action.payload
-          .map(doc => doc.data())
-          .filter(task => task.completed);
-        state.activeTasks = action.payload
-          .map(doc => doc.data())
-          .filter(task => !task.completed);
+        state.completedTasks = action.payload.filter(task => task.completed);
+        state.activeTasks = action.payload.filter(task => !task.completed);
       })
       .addCase(deleteTasks.pending, state => {
         state.error = null;
@@ -80,6 +77,30 @@ const authSlice = createSlice({
         state.activeTasks = state.activeTasks.filter(
           task => task.id !== action.payload
         );
+      })
+      .addCase(toggleComplete.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(toggleComplete.fulfilled, (state, action) => {
+        const { taskId, completed } = action.payload;
+        state.activeTasks = state.activeTasks.map(task => {
+          if (task.id === taskId) {
+            return { ...task, completed };
+          }
+          return task;
+        });
+        state.completedTasks = state.completedTasks.map(task => {
+          if (task.id === taskId) {
+            return { ...task, completed };
+          }
+          return task;
+        });
+      })
+
+      .addCase(toggleComplete.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

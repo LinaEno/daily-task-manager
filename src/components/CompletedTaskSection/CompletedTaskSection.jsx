@@ -7,13 +7,10 @@ import {
   WrapperButton,
   WrapperTitle,
   SectionCompleted,
-
   Section,
   TitleTask,
   WrapperCompl,
-
   Wrapper,
-
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';

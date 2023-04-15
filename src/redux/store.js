@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
+// import { serializableCheck } from 'reduxjs/toolkit';
 import { authReducer } from './auth/authSlice';
 import { globalReducer } from './global/slice';
 

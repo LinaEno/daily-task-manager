@@ -133,7 +133,10 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import {
+  selectActiveTasks,
+  selectCurrentUserUid,
+} from 'redux/auth/authSelectors';
 import {
   collection,
   deleteDoc,
@@ -141,7 +144,7 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
-import brush from '../../img/brush.png';
+import brush from '../../img/brush.svg';
 import {
   Container,
   Wrapper,
@@ -165,48 +168,28 @@ import {
   selectEditingTaskId,
   selectIsModalEditTaskOpen,
 } from 'redux/global/selectors';
+import {
+  deleteTasks,
+  requestAllTasks,
+  toggleComplete,
+} from 'redux/auth/authOperation';
 
 const TasksPage = () => {
+  const dispatch = useDispatch();
   const currentUserUid = useSelector(selectCurrentUserUid);
   const editingTaskId = useSelector(selectEditingTaskId);
-  const [tasks, setTasks] = useState([]);
-  const dispatch = useDispatch();
   const isModalOpen = useSelector(selectIsModalEditTaskOpen);
-
-  const getAllActiveTasks = useCallback(async () => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const querySnapshot = await getDocs(userTasksRef);
-    const tasksData = querySnapshot.docs
-      .map(doc => doc.data())
-      .filter(task => !task.completed);
-    setTasks(tasksData);
-  }, [currentUserUid]);
+  const tasks = useSelector(selectActiveTasks);
 
   useEffect(() => {
     if (!currentUserUid) return;
-    getAllActiveTasks();
-  }, [currentUserUid, getAllActiveTasks]);
+    dispatch(requestAllTasks());
+  }, [currentUserUid, dispatch]);
 
   const deleteTask = async taskId => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const taskRef = doc(userTasksRef, taskId);
-    await deleteDoc(taskRef);
-    setTasks(prevState => prevState.filter(task => task.id !== taskId));
+    dispatch(deleteTasks(taskId));
   };
 
-  const toggleComplete = async (taskId, completed) => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const taskRef = doc(userTasksRef, taskId);
-    await updateDoc(taskRef, { completed });
-    setTasks(prevState =>
-      prevState.map(task => {
-        if (task.id === taskId) {
-          return { ...task, completed };
-        }
-        return task;
-      })
-    );
-  };
   const taskToEdit =
     tasks?.length > 0 && tasks.find(task => task.id === editingTaskId);
 
@@ -227,9 +210,20 @@ const TasksPage = () => {
                         name="completed"
                         checked={task.completed}
                         id={task.id}
-                        onChange={() =>
-                          toggleComplete(task.id, !task.completed)
-                        }
+                        onChange={() => {
+                          console.log(
+                            'toggleComplete',
+                            task.id,
+                            task.completed
+                          );
+                          dispatch(
+                            toggleComplete({
+                              taskId: task.id,
+                              completed: !task.completed,
+                            })
+                          );
+                          dispatch(requestAllTasks());
+                        }}
                       />
                       <label htmlFor={task.id}></label>
                     </CheckBox>
@@ -256,7 +250,7 @@ const TasksPage = () => {
           <ModalContainer>
             <ModalEditTask
               task={taskToEdit}
-              getAllActiveTasks={getAllActiveTasks}
+              // requestAllTasks={requestAllTasks}
             />
           </ModalContainer>
         )}

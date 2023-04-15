@@ -5,6 +5,7 @@ export const QuoteText = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: 400;
   letter-spacing: 0.05em;
+  color: #393d54;
 `;
 
 export const QuoteAuthor = styled(QuoteText)`

@@ -41,11 +41,13 @@ export const LabelBox = styled.label`
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+  color: #393d54;
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
 `;
 
 export const Check = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,15 +69,10 @@ export const AddBtn = styled.button`
   }
 `;
 
-export const ChackName = styled.label`
+export const CheckName = styled.p`
   font-weight: 700;
   font-size: 16px;
   line-height: 15.45px;
-`;
-
-export const ChackInput = styled.label`
-  font-size: 1rem;
-  display: grid;
-  grid-template-columns: 1em auto;
-  gap: 0.5em;
+  color: #393d54;
+  margin-left: 30px;
 `;

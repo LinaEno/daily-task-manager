@@ -25,12 +25,13 @@ html {
   }
 
 header {
-  display: grid
+  display: grid;
   grid-area: 1 / 1 / 2 / 2;
 }
 
 main {
   grid-area: 1 / 2 / 2 / 5;
+  
 }
 
   aside {

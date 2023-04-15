@@ -17,6 +17,7 @@ import {
   collection,
   getDocs,
   deleteDoc,
+  getDoc,
 } from '@firebase/firestore';
 import { auth, db, storage } from '../../firebase';
 
@@ -99,7 +100,6 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     console.error(error);
   }
 });
-
 export const requestAllTasks = createAsyncThunk(
   'tasks/all',
   async (_, { getState }) => {
@@ -107,7 +107,7 @@ export const requestAllTasks = createAsyncThunk(
     try {
       const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
       const querySnapshot = await getDocs(userTasksRef);
-      const tasksData = querySnapshot.docs;
+      const tasksData = querySnapshot.docs.map(doc => doc.data());
       return tasksData;
     } catch (error) {
       console.error(error);
@@ -127,5 +127,16 @@ export const deleteTasks = createAsyncThunk(
     } catch (error) {
       console.error(error);
     }
+  }
+);
+
+export const toggleComplete = createAsyncThunk(
+  'tasks/toggleComplete',
+  async ({ taskId, completed }, { getState }) => {
+    const currentUserUid = getState().auth.currentUserUid;
+    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
+    const taskRef = doc(userTasksRef, taskId);
+    await updateDoc(taskRef, { completed });
+    return { taskId, completed };
   }
 );

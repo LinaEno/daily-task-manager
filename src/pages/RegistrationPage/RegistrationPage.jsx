@@ -35,21 +35,13 @@ export function RegistrationPage() {
     }
   };
 
-  const [mousePos1, setMousePos1] = useState({});
-  const [mousePos2, setMousePos2] = useState({});
-  const [mousePos3, setMousePos3] = useState({});
-  const [mousePos4, setMousePos4] = useState({});
-  const [mousePos5, setMousePos5] = useState({});
-  const [mousePos6, setMousePos6] = useState({});
+  const [mousePos, setMousePos] = useState({});
+
+  const 
 
   useEffect(() => {
     const handleMouseMove = event => {
-      setMousePos1({ x: event.clientX / 500, y: -(event.clientY / 400) });
-      setMousePos2({ x: -(event.clientX / 400), y: event.clientY / 300 });
-      setMousePos3({ x: event.clientX / 200, y: -(event.clientY / 200) });
-      setMousePos4({ x: -(event.clientX / 200), y: event.clientY / 400 });
-      setMousePos5({ x: event.clientX / 300, y: event.clientY / 200 });
-      setMousePos6({ x: event.clientX / 500, y: -event.clientY / 400 });
+      setMousePos({ x: event.clientX / 1000, y: (event.clientY / 1000) });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -66,7 +58,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(${mousePos1.x}rem, ${mousePos1.y}rem)`,
+              transform: `translate3d(${mousePos1.x}rem, ${mousePos1.y}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img
@@ -87,7 +79,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(0rem, ${mousePos2.y}rem)`,
+              transform: `translate3d(0rem, ${mousePos2.y}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img
@@ -100,7 +92,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(0rem, ${mousePos3.y}rem)`,
+              transform: `translate3d(0rem, ${mousePos3.y}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img
@@ -113,7 +105,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(${mousePos4.x}rem, 0rem)`,
+              transform: `translate3d(${mousePos4.x}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img
@@ -126,7 +118,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(0rem, ${mousePos5.y}rem)`,
+              transform: `translate3d(0rem, ${mousePos5.y}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img
@@ -139,7 +131,7 @@ export function RegistrationPage() {
           <div
             className={css.layer}
             style={{
-              transform: `translate(${mousePos6.x}rem, ${mousePos6.y}rem)`,
+              transform: `translate3d(${mousePos6.x}rem, ${mousePos6.y}rem, 0rem)`, willChange: 'transform',
             }}
           >
             <img

@@ -9,7 +9,6 @@ export const HeaderContainer = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 120px;
     flex-direction: column;
-    height: 100vh;
   }
 `;
 
@@ -20,7 +19,6 @@ export const NavStyled = styled.nav`
   align-items: center;
   position: relative;
   height: 150px;
-  width: 750px;
   width: 100%;
   height: 150px;
   background: ${({ theme }) => theme.asideBackground};
@@ -28,7 +26,7 @@ export const NavStyled = styled.nav`
   @media screen and (min-width: 768px) {
     max-width: 120px;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     padding-top: 20px;
   }
 `;
@@ -88,7 +86,7 @@ export const NavLinkStyled = styled(NavLink)`
     );
     width: 50px;
     height: 50px;
-    left: 30px;
+    left: 20px;
 
     z-index: -1;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
@@ -122,6 +120,8 @@ export const Container = styled.div`
 export const MobileNav = styled.div`
   display: flex;
   justify-content: end;
+  margin: 0 auto;
+
   padding: 20px;
   gap: 20px;
   max-width: 320px;

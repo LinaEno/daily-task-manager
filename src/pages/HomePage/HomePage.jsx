@@ -1,43 +1,31 @@
 import { ContainerHome } from 'components/App.styled';
-import css from './Pen.module.css';
 import TasksPage from 'components/Tasks/TasksPage';
-import useAuth from 'hooks/useAuth';
+// import useAuth from 'hooks/useAuth';
 import { selectCurrentUser } from 'redux/auth/authSelectors';
-import { useEffect } from 'react';
-import { onAuthStateChanged } from '@firebase/auth';
-import { auth } from '../../firebase';
-import { setCurrentUser } from 'redux/auth/authSlice';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { onAuthStateChanged } from '@firebase/auth';
+// import { auth } from '../../firebase';
+// import { setCurrentUser, setLoading } from 'redux/auth/authSlice';
+import { useSelector } from 'react-redux';
 import { Default } from 'components/Media/Media';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 import Aside from 'components/Aside/Aside';
 import { Header } from 'components/Header/Header';
 import AuthNav from 'components/AuthNavigation/AuthNav';
 
+import css from './Pen.module.css';
+
 const HomePage = () => {
-  const currentUser = useSelector(selectCurrentUser);
-
-  // useEffect(() => {
-  //   const listener = onAuthStateChanged(auth, user => {
-  //     if (user === null) return;
-
-  //     const serializableUserData = {
-  //       uid: user.uid,
-  //       email: user.email,
-  //       displayName: user.displayName,
-  //       photoURL: user.photoURL,
-  //     };
-
-  //     dispatch(setUser({ user: serializableUserData }));
-  //     dispatch(setAuthStatus({ status: 'resolved' }));
-  //   });
-
-  //   return listener;
-  // }, [dispatch]);
+  // const currentUser = useSelector(selectCurrentUser);
 
   return (
     <>
-      {currentUser ? (
+      <>
+        <Header />
+        <TasksPage />
+        <Aside />
+      </>
+      {/* {currentUser ? (
         <>
           <Header />
           <TasksPage />
@@ -47,7 +35,7 @@ const HomePage = () => {
         <>
           <AuthNav />
           <ContainerHome>
-            <div id={css['rectangle']}>
+            <div id={css.rectangle}>
               Please sign in or sign up to start !<span></span>
             </div>
             <Default>
@@ -64,6 +52,7 @@ const HomePage = () => {
           </ContainerHome>
         </>
       )}
+    </> */}
     </>
   );
 };

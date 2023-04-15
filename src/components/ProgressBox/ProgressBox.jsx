@@ -1,40 +1,22 @@
 import { Box, Title } from './ProgressBox.styled';
 import { Chart } from 'components/Chart/Chart';
 import { StatBox } from 'components/StatBox/StatBox';
-import { db } from '../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+import { requestAllTasks } from 'redux/auth/authOperation';
 
 export const Progress = () => {
+  const dispatch = useDispatch();
   const currentUserUid = useSelector(selectCurrentUserUid);
-  const [totalActive, setTotalActive] = useState([]);
-  const [totalCompleted, setTotalCompleted] = useState([]);
-
-  const getCompletedTasks = useCallback(async () => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const querySnapshot = await getDocs(userTasksRef);
-    const tasksData = querySnapshot.docs
-      .map(doc => doc.data())
-      .filter(task => task.completed);
-    setTotalCompleted(tasksData);
-  }, [currentUserUid]);
-
-  const getAllActiveTasks = useCallback(async () => {
-    const userTasksRef = collection(db, 'users', currentUserUid, 'tasks');
-    const querySnapshot = await getDocs(userTasksRef);
-    const tasksData = querySnapshot.docs
-      .map(doc => doc.data())
-      .filter(task => !task.completed);
-    setTotalActive(tasksData);
-  }, [currentUserUid]);
+  const totalActive = useSelector(state => state.auth.activeTasks);
+  const totalCompleted = useSelector(state => state.auth.completedTasks);
 
   useEffect(() => {
     if (!currentUserUid) return;
-    getCompletedTasks();
-    getAllActiveTasks();
-  }, [currentUserUid, getAllActiveTasks, getCompletedTasks]);
+
+    dispatch(requestAllTasks());
+  }, [currentUserUid, dispatch]);
 
   const totalCompletedCount = totalCompleted.length;
 

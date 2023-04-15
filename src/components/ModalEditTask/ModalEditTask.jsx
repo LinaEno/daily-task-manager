@@ -12,8 +12,9 @@ import {
   TextArea,
   Title,
 } from './ModalEditTask.styled';
+import { requestAllTasks } from 'redux/auth/authOperation';
 
-const ModalEditTask = ({ task, getAllActiveTasks }) => {
+const ModalEditTask = ({ task }) => {
   const [updateTitle, setUpdateTitle] = useState(task.title);
   const [updateDescription, setUpdateDescription] = useState(task.description);
   const currentUserUid = useSelector(selectCurrentUserUid);
@@ -32,7 +33,8 @@ const ModalEditTask = ({ task, getAllActiveTasks }) => {
       task.id
     );
     await updateDoc(taskRef, updatedFields);
-    await getAllActiveTasks();
+
+    dispatch(requestAllTasks());
 
     dispatch(closeModal());
   };

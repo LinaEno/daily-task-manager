@@ -15,7 +15,11 @@ import { collection, doc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
+
+import { CheckBox } from 'components/Tasks/TasksPage.styled';
+
 import { requestAllTasks } from 'redux/auth/authOperation';
+
 
 const AddTaskSection = () => {
   const dispatch = useDispatch();
@@ -73,16 +77,19 @@ const AddTaskSection = () => {
           />
         </LabelBox>
         <Check>
-          <ChackInput>
-            <input
-              type="checkbox"
-              name="completed"
-              checked={completed}
-              onChange={e => setCompleted(e.target.checked)}
-            />
-            <ChackName htmlFor="completed">Completed</ChackName>
-          </ChackInput>
-
+          <div>
+            <CheckBox>
+              <input
+                id="completed"
+                type="checkbox"
+                name="completed"
+                checked={completed}
+                onChange={e => setCompleted(e.target.checked)}
+              />
+              <label htmlFor="completed"></label>
+            </CheckBox>
+            <ChackName>Completed</ChackName>
+          </div>
           <AddBtn type="submit">Add task</AddBtn>
         </Check>
       </AddForm>

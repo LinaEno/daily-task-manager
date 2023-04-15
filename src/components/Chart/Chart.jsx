@@ -12,12 +12,12 @@ ChartJS.overrides.doughnut.plugins = {
 
 export const Chart = ({ activePercentage, completedPercentage }) => {
   const data = {
-    labels: ['Completed', 'Active'],
+    labels: ['Active', 'Completed'],
     datasets: [
       {
         label: '',
         data: [activePercentage, completedPercentage],
-        backgroundColor: ['rgb(23, 51, 230)', 'rgb(239, 233, 68)'],
+        backgroundColor: ['rgb(239, 233, 68)', 'rgb(23, 51, 230)'],
         borderWidth: 0,
         cutout: '65%',
         borderRadius: 20,

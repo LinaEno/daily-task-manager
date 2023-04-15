@@ -1,5 +1,6 @@
 export const light = {
-  mainBackground: '#F5F5F5',
+  // mainBackground: '#F5F5F5',
+  mainBackground: '#fffcf1',
   asideBackground: '#FFE7B8',
   blockBackground: '#FFFFFF',
   text: '#393D54',

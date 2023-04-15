@@ -6,27 +6,15 @@ export const Container = styled.div`
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  background: #fffcf1;
 `;
+
 export const Section = styled.div`
   width: 90%;
   height: auto;
-  background: #fff;
+  background: ${({ theme }) => theme.blockBackground};
   border-radius: 20px;
-  padding-right: 30px;
+  padding: 20px;
   margin: 0 auto;
-  padding-bottom: 30px;
-`;
-
-export const SectionCompleted = styled.div`
-  width: 90%;
-  height: auto;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid green;
-  padding: 10px;
-  margin: 0 auto;
-  padding-bottom: 30px;
 `;
 
 export const CheckBox = styled.div`
@@ -35,7 +23,6 @@ export const CheckBox = styled.div`
     height: 20px;
     cursor: pointer;
     position: absolute;
-    /* top: 25px; */
     top: 40%;
     left: 10px;
     background: #fcfff4;
@@ -69,15 +56,20 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   gap: 20px;
-  width: 90%;
   padding: 10px;
   min-height: 100px;
   font-size: 18px;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin: 0 auto;
   background: ${({ theme }) => theme.asideBackground};
   border-radius: 20px;
-  margin-bottom: 30px;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+`;
+
+export const WrapperCompl = styled(Wrapper)`
+  background: ${({ theme }) => theme.colorGrey};
 `;
 
 export const WrapperTitle = styled.div`
@@ -104,6 +96,7 @@ export const Title = styled.p`
   word-wrap: break-word;
   overflow: hidden;
 `;
+
 export const TitleDesk = styled.p`
   width: 100%;
   word-wrap: break-word;
@@ -114,19 +107,20 @@ export const TitleMain = styled.h2`
   text-align: center;
   margin-bottom: 30px;
 `;
+
 export const TitleTask = styled.h2`
   font-size: 24px;
   text-align: left;
-  padding-bottom: 10px;
-  padding-top: 30px;
-  padding-left: 40px;
+  margin-bottom: 20px;
+  color: #393d54;
 `;
+
 export const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: #000000;
+  color: ${({ theme }) => theme.text};
   background-color: transparent;
   border: none;
   border-radius: 50%;
@@ -143,7 +137,10 @@ export const EditButton = styled.button`
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: #000000;
+  fill: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
+  stroke: currentColor;
+
   background-color: transparent;
   border: none;
   border-radius: 50%;

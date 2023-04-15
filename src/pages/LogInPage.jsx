@@ -7,7 +7,7 @@ import { selectLoading } from 'redux/auth/authSelectors';
 import css from './RegistrationPage/Registration.module.css';
 import sun from '../img/login/sun-min.png';
 import forest from '../img/login/forest-min.png';
-import cloud2 from '../img/login/cloud5.png';
+import cloud2 from '../img/login/cloud2-min.png';
 import cloud1 from '../img/login/cloud1-min.png';
 import balloon1 from '../img/login/balloon1-min.png';
 import balloon2 from '../img/login/balloon2-min.png';

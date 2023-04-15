@@ -1,9 +1,17 @@
+.container {
+	display: block;
+	margin: 30px auto 0;
+	width: 100%;
+	grid-area: 1 / 1 / 2 / 11;
+
+}
+
 .pencil {
 	display: block;
 	margin: 0 auto;
-
 	width: 10em;
 	height: 10em;
+	z-index: 100;
 }
 .pencil__body1,
 .pencil__body2,

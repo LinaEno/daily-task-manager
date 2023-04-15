@@ -7,6 +7,7 @@ import {
   WrapperButton,
   WrapperTitle,
   SectionCompleted,
+  Wrapper,
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';

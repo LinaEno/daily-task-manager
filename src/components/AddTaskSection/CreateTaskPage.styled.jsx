@@ -69,10 +69,10 @@ export const AddBtn = styled.button`
   }
 `;
 
-export const ChackName = styled.label`
+export const CheckName = styled.p`
   font-weight: 700;
   font-size: 16px;
   line-height: 15.45px;
   color: #393d54;
-  margin-left: 40px;
+  margin-left: 30px;
 `;

@@ -25,7 +25,7 @@ html {
   }
 
 header {
-  display: grid
+  display: grid;
   grid-area: 1 / 1 / 2 / 2;
 }
 

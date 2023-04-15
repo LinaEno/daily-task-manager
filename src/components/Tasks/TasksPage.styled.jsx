@@ -18,12 +18,14 @@ export const Section = styled.div`
 `;
 
 export const CheckBox = styled.div`
+  display: flex;
+  align-items: center;
   label {
     width: 20px;
     height: 20px;
     cursor: pointer;
     position: absolute;
-    top: 40%;
+    top: 20%;
     left: 10px;
     background: #fcfff4;
     background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
@@ -106,6 +108,7 @@ export const TitleMain = styled.h2`
   font-size: 58px;
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 30px;
 `;
 
 export const TitleTask = styled.h2`

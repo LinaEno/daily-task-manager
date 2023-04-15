@@ -5,6 +5,7 @@ import {
   ChackInput,
   ChackName,
   Check,
+  CheckName,
   LabelBox,
   Section,
   TextArea,
@@ -19,7 +20,6 @@ import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { CheckBox } from 'components/Tasks/TasksPage.styled';
 
 import { requestAllTasks } from 'redux/auth/authOperation';
-
 
 const AddTaskSection = () => {
   const dispatch = useDispatch();
@@ -77,19 +77,19 @@ const AddTaskSection = () => {
           />
         </LabelBox>
         <Check>
-          <div>
-            <CheckBox>
-              <input
-                id="completed"
-                type="checkbox"
-                name="completed"
-                checked={completed}
-                onChange={e => setCompleted(e.target.checked)}
-              />
-              <label htmlFor="completed"></label>
-            </CheckBox>
-            <ChackName>Completed</ChackName>
-          </div>
+          {/* <div> */}
+          <CheckBox>
+            <input
+              id="completed"
+              type="checkbox"
+              name="completed"
+              checked={completed}
+              onChange={e => setCompleted(e.target.checked)}
+            />
+            <label htmlFor="completed"></label>
+            <CheckName>Completed</CheckName>
+          </CheckBox>
+          {/* </div> */}
           <AddBtn type="submit">Add task</AddBtn>
         </Check>
       </AddForm>

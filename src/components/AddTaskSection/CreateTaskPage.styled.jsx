@@ -31,7 +31,7 @@ export const AddForm = styled.form`
   width: 90%;
   gap: 30px;
   margin: 0 auto;
-  background: #fff;
+  background: ${({ theme }) => theme.blockBackground};
   border-radius: 20px;
   padding: 20px;
 `;
@@ -57,7 +57,7 @@ export const AddBtn = styled.button`
   font-weight: 700;
   font-size: 16px;
   line-height: 15.45px;
-  padding: 10px;
+  padding: 12px 20px;
   box-shadow: ${({ theme }) => theme.shadows.small};
   border-radius: 10px;
   background: ${({ theme }) => theme.bgcButton};

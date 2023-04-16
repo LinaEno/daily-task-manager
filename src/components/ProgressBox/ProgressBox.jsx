@@ -5,12 +5,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { requestAllTasks } from 'redux/auth/authOperation';
+import { useTranslation } from 'react-i18next';
 
 export const Progress = () => {
   const dispatch = useDispatch();
   const currentUserUid = useSelector(selectCurrentUserUid);
   const totalActive = useSelector(state => state.auth.activeTasks);
   const totalCompleted = useSelector(state => state.auth.completedTasks);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!currentUserUid) return;
@@ -29,7 +31,7 @@ export const Progress = () => {
 
   return (
     <Box>
-      <Title>Activity Graph</Title>
+      <Title>{t('profile.activityGraph')}</Title>
       <StatBox
         activePercentage={activePercentage}
         completedPercentage={completedPercentage}

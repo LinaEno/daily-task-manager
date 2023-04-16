@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { ChartContainer, ChartLabel, DoughnutBox } from './Chart.styled';
+import { useTranslation } from 'react-i18next';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -11,6 +12,8 @@ ChartJS.overrides.doughnut.plugins = {
 };
 
 export const Chart = ({ activePercentage, completedPercentage }) => {
+  const { t } = useTranslation();
+
   const data = {
     labels: ['Active', 'Completed'],
     datasets: [
@@ -41,7 +44,7 @@ export const Chart = ({ activePercentage, completedPercentage }) => {
   return (
     <ChartContainer>
       <DoughnutBox data={data} />
-      <ChartLabel>Tasks</ChartLabel>
+      <ChartLabel>{t('profile.tasks')}</ChartLabel>
     </ChartContainer>
   );
 };

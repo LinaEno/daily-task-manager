@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from '../../img/close.svg';
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
 `;
 
-export const Section = styled.div`
+export const Section = styled.section`
   width: 90%;
   height: auto;
   background: ${({ theme }) => theme.blockBackground};

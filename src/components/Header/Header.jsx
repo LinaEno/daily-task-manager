@@ -22,6 +22,8 @@ import { Mobile, Default } from 'components/Media/Media';
 import { BsList, BsX, BsBoxArrowRight } from 'react-icons/bs';
 import { TbLayoutGrid, TbLayoutGridAdd } from 'react-icons/tb';
 import { selectCurrentUser } from 'redux/auth/authSelectors';
+import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
   // const { currentUser } = useAuth();
@@ -31,6 +33,8 @@ export const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [hideOrShow, setHideOrShow] = useState({});
+
+  const { t } = useTranslation();
 
   const handleMenu = () => {
     setIsOpen(prev => !prev);
@@ -56,6 +60,7 @@ export const Header = () => {
         <Container>
           <MobileNav>
             <ThemeSwitcher />
+            <LangSwitcher />
             {isOpen ? (
               <button type="button" onClick={handleMenu}>
                 <BsX size={30} />
@@ -70,22 +75,22 @@ export const Header = () => {
             <MobileList>
               <li>
                 <MobileNavLink to="/" onClick={handleMenu}>
-                  Profile
+                {t('header.profile')}
                 </MobileNavLink>
               </li>
               <li>
                 <MobileNavLink to="/" onClick={handleMenu}>
-                  Tasks
+                {t('header.activeTasks')}
                 </MobileNavLink>
               </li>
               <li>
                 <MobileNavLink to="/add" onClick={handleMenu}>
-                  Adding
+                {t('header.createTask')}
                 </MobileNavLink>
               </li>
               <li>
                 <button type="button" onClick={handleLogout}>
-                  Exit
+                {t('header.exit')}
                 </button>
               </li>
             </MobileList>
@@ -118,6 +123,7 @@ export const Header = () => {
               </ListItem>
             </ListStyled>
             <ThemeSwitcher />
+            <LangSwitcher />
           </NavStyled>
         </HeaderContainer>
       </Default>

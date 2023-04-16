@@ -173,6 +173,7 @@ import {
   requestAllTasks,
   toggleComplete,
 } from 'redux/auth/authOperation';
+import { useTranslation } from 'react-i18next';
 
 const TasksPage = () => {
   const dispatch = useDispatch();
@@ -180,6 +181,7 @@ const TasksPage = () => {
   const editingTaskId = useSelector(selectEditingTaskId);
   const isModalOpen = useSelector(selectIsModalEditTaskOpen);
   const tasks = useSelector(selectActiveTasks);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!currentUserUid) return;
@@ -196,9 +198,9 @@ const TasksPage = () => {
   return (
     <main>
       <Container>
-        <TitleMain>Daily tasks</TitleMain>
+        <TitleMain>{t('manager.title')}</TitleMain>
         <Section>
-          <TitleTask>Your active task</TitleTask>
+          <TitleTask>{t('manager.yourActive')}</TitleTask>
           {tasks?.length > 0 &&
             tasks.map(task => {
               return (

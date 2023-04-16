@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Page404.module.css';
+import { useTranslation } from 'react-i18next';
 
 function PageNotFound404() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -35,10 +37,10 @@ function PageNotFound404() {
 
       <div className={css.error}>
         <p className={css.number}>404</p>
-        <h1 className={css.title}>Page Not Found</h1>
+        <h1 className={css.title}>{t('error.description')}</h1>
         <button className={css.btn}>
           <NavLink className={css.link} to={'/'}>
-            Go back
+          {t('error.button')}
           </NavLink>
         </button>
       </div>

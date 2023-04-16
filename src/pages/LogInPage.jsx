@@ -152,7 +152,7 @@ export default function LoginPage() {
                 <div className={css.register__inputbox}>
                   <input
                     className={css.login__input}
-                    type="email"
+                    type="text"
                     name="email"
                     value={email}
                     required

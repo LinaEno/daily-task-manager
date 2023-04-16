@@ -13,12 +13,14 @@ import {
   Title,
 } from './ModalEditTask.styled';
 import { requestAllTasks } from 'redux/auth/authOperation';
+import { useTranslation } from 'react-i18next';
 
 const ModalEditTask = ({ task }) => {
   const [updateTitle, setUpdateTitle] = useState(task.title);
   const [updateDescription, setUpdateDescription] = useState(task.description);
   const currentUserUid = useSelector(selectCurrentUserUid);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSaveChanges = async event => {
     event.preventDefault();
@@ -42,9 +44,9 @@ const ModalEditTask = ({ task }) => {
   return (
     <Box>
       <ModalForm onSubmit={handleSaveChanges}>
-        <Title>Add changes to your task</Title>
+        <Title>{t('editTask.mainTitle')}</Title>
         <ModalLabel>
-          Title
+        {t('editTask.title')}
           <TextArea
             type="text"
             name="updateTitle"
@@ -53,7 +55,7 @@ const ModalEditTask = ({ task }) => {
           />
         </ModalLabel>
         <ModalLabel>
-          Description
+        {t('editTask.description')}
           <TextArea
             rows="8"
             type="text"
@@ -62,7 +64,7 @@ const ModalEditTask = ({ task }) => {
             onChange={e => setUpdateDescription(e.target.value)}
           />
         </ModalLabel>
-        <ModalBtn type="submit">Edit task</ModalBtn>
+        <ModalBtn type="submit">{t('editTask.button')}</ModalBtn>
       </ModalForm>
     </Box>
   );

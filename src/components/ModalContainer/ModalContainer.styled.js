@@ -39,7 +39,7 @@ export const Overlay = styled.div`
 export const ModalBox = styled.div`
   position: relative;
   min-width: 540px;
-  min-height: 508px;
+  min-height: 370px;
   padding: 40px;
   background-color: #fff;
   border-radius: 20px;

@@ -11,8 +11,8 @@ export const ChartContainer = styled.div`
   position: relative;
   display: grid;
   place-items: center;
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   margin: 20px auto 0;
 
   @media screen and (min-width: 1280px) {
@@ -20,7 +20,7 @@ export const ChartContainer = styled.div`
     width: 140px;
     height: 140px;
     top: 10%;
-    right: 10%;
+    right: 5%;
   }
 `;
 

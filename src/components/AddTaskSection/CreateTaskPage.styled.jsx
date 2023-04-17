@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  width: 100%;
   height: auto;
   margin: 0 auto;
   margin-bottom: 70px;
@@ -28,7 +27,6 @@ export const TextArea = styled.textarea`
 export const AddForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 90%;
   gap: 30px;
   margin: 0 auto;
   background: #fff;

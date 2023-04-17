@@ -11,6 +11,9 @@ import {
   TitleTask,
   WrapperCompl,
   Wrapper,
+  Btn,
+  WrapperCompleted,
+  CheckBoxAddForm,
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';
@@ -43,7 +46,7 @@ const CompletedTaskSection = () => {
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (
-            <WrapperCompl key={task.id}>
+            <WrapperCompleted key={task.id}>
               <CheckBox>
                 <input
                   type="checkbox"
@@ -58,12 +61,10 @@ const CompletedTaskSection = () => {
                 <Title>{task.title}</Title>
                 <TitleDesk>{task.description}</TitleDesk>
               </WrapperTitle>
-              <WrapperButton>
-                <CloseButton onClick={() => deleteTask(task.id)}>
-                  <IconClose />
-                </CloseButton>
-              </WrapperButton>
-            </WrapperCompl>
+              <Btn onClick={() => deleteTask(task.id)}>
+                <IconClose />
+              </Btn>
+            </WrapperCompleted>
           );
         })}
     </Section>

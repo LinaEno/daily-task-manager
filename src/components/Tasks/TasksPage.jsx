@@ -144,7 +144,7 @@ import {
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
-import brush from '../../img/brush.svg';
+import { ImPencil2 } from 'react-icons/im';
 import {
   Container,
   Wrapper,
@@ -235,7 +235,7 @@ const TasksPage = () => {
                       <EditButton
                         onClick={() => dispatch(openModalEditTask(task.id))}
                       >
-                        <img src={brush} alt="brush" />
+                        <ImPencil2 />
                       </EditButton>
                       <CloseButton onClick={() => deleteTask(task.id)}>
                         <IconClose />

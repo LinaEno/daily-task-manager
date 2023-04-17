@@ -17,7 +17,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 
-import { CheckBox } from 'components/Tasks/TasksPage.styled';
+import { CheckBox, CheckBoxAddForm } from 'components/Tasks/TasksPage.styled';
 
 import { requestAllTasks } from 'redux/auth/authOperation';
 
@@ -77,8 +77,7 @@ const AddTaskSection = () => {
           />
         </LabelBox>
         <Check>
-          {/* <div> */}
-          <CheckBox>
+          <CheckBoxAddForm>
             <input
               id="completed"
               type="checkbox"
@@ -88,8 +87,8 @@ const AddTaskSection = () => {
             />
             <label htmlFor="completed"></label>
             <CheckName>Completed</CheckName>
-          </CheckBox>
-          {/* </div> */}
+          </CheckBoxAddForm>
+
           <AddBtn type="submit">Add task</AddBtn>
         </Check>
       </AddForm>

@@ -24,11 +24,13 @@ import {
 } from 'redux/auth/authSelectors';
 import { AddTitle } from 'components/AddTaskSection/CreateTaskPage.styled';
 import { deleteTasks, requestAllTasks } from 'redux/auth/authOperation';
+import { useTranslation } from 'react-i18next';
 
 const CompletedTaskSection = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
   const tasks = useSelector(selectCompletedTasks);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!currentUserUid) return;
@@ -42,7 +44,7 @@ const CompletedTaskSection = () => {
 
   return (
     <Section>
-      <TitleTask>Your comleted tasks</TitleTask>
+      <TitleTask>{t('addTask.completedTitle')}</TitleTask>
       {tasks?.length > 0 &&
         tasks.map(task => {
           return (

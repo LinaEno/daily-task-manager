@@ -45,7 +45,7 @@ export const ModalBtn = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: #000;
-  padding: 10px;
+  padding: 10px 20px;
   border: 1px solid #fff;
   box-shadow: 2px 2px 10px #fff;
   border-radius: 10px;

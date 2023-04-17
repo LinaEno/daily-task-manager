@@ -13,17 +13,19 @@ import { selectCurrentUser } from 'redux/auth/authSelectors';
 import { selectEditProfileModal } from 'redux/global/selectors';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import ModalEditUserProfile from '../ModalEditUserProfile/ModalEditUserProfile';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const isModalEditProfileOpen = useSelector(selectEditProfileModal);
+  const { t } = useTranslation();
 
   return (
     <>
       <Box>
         <TopBox>
-          <Title>My Profile</Title>
+          <Title>{t('profile.myProfile')}</Title>
           <button onClick={() => dispatch(openModalEditProfile())}>
             <img src={brush} alt="brush" />
           </button>

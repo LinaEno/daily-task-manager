@@ -22,6 +22,7 @@ import {
   uploadBytes,
 } from 'firebase/storage';
 import { updateCurrentUser } from 'redux/auth/authSlice';
+import { useTranslation } from 'react-i18next';
 
 const ModalEditUserProfile = () => {
   const [updateName, setUpdateName] = useState('');
@@ -30,6 +31,7 @@ const ModalEditUserProfile = () => {
   const currentUserUid = useSelector(selectCurrentUserUid);
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const { t } = useTranslation();
 
   const handleSaveChanges = async event => {
     event.preventDefault();
@@ -66,9 +68,9 @@ const ModalEditUserProfile = () => {
   return (
     <Box>
       <ModalForm onSubmit={handleSaveChanges}>
-        <Title>Add changes to your profile</Title>
+        <Title>{t('editProfile.mainTitle')}</Title>
         <ModalLabel>
-          Change name
+        {t('editProfile.name')}
           <TextArea
             type="text"
             name="updateName"
@@ -77,14 +79,14 @@ const ModalEditUserProfile = () => {
           />
         </ModalLabel>
         <ModalLabel>
-          Description
+        {t('editProfile.description')}
           <input
             type="file"
             name="updatePhotoURL"
             onChange={handleFileInputChange}
           />
         </ModalLabel>
-        <ModalBtn type="submit">Edit profile</ModalBtn>
+        <ModalBtn type="submit">{t('editProfile.button')}</ModalBtn>
       </ModalForm>
     </Box>
   );

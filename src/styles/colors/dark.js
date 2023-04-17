@@ -1,7 +1,7 @@
 export const dark = {
   mainBackground: '#A89FEE',
   asideBackground: '#6B5DD3',
-  blockBackground: '#F5F5F5',
+  blockBackground: '#c0c0c0',
   text: '#F5F5F5',
   textTitle: '#F5F5F5',
   textGrayProfile: '#B3AEA5',

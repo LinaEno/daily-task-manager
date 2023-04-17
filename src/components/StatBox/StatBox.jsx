@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   ColorBoxD,
   ColorBoxR,
@@ -11,17 +12,19 @@ import {
 } from './StatBox.styled';
 
 export const StatBox = ({ activePercentage, completedPercentage }) => {
+  const { t } = useTranslation();
+
   return (
     <WrapBox>
       <StatWrap>
         <ColorBoxD></ColorBoxD>
         <StatTitleWrap>
-          <StatTitle>Completed</StatTitle>
+          <StatTitle>{t('profile.completed')}</StatTitle>
           <StatText>
             <NumberSpan>
               {completedPercentage ? completedPercentage.toFixed(0) : 0}%
             </NumberSpan>
-            <TextSpan>of total</TextSpan>
+            <TextSpan>{t('profile.total')}</TextSpan>
             {/* <TextSpan>of total amounts</TextSpan> */}
           </StatText>
         </StatTitleWrap>
@@ -29,12 +32,12 @@ export const StatBox = ({ activePercentage, completedPercentage }) => {
       <StatWrap>
         <ColorBoxR></ColorBoxR>
         <StatTitleWrap>
-          <StatTitle>Active</StatTitle>
+          <StatTitle>{t('profile.active')}</StatTitle>
           <StatText>
             <NumberSpan>
               {activePercentage ? activePercentage.toFixed(0) : 0}%
             </NumberSpan>
-            <TextSpan>of total</TextSpan>
+            <TextSpan>{t('profile.total')}</TextSpan>
             {/* <TextSpan>of total amounts</TextSpan> */}
           </StatText>
         </StatTitleWrap>

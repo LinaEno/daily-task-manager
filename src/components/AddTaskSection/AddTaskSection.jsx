@@ -2,14 +2,11 @@ import {
   AddBtn,
   AddForm,
   AddTitle,
-  ChackInput,
-  ChackName,
   Check,
   CheckName,
   LabelBox,
   Section,
   TextArea,
-  Title,
 } from 'components/AddTaskSection/CreateTaskPage.styled';
 import { db } from '../../firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';
@@ -20,12 +17,14 @@ import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 import { CheckBox, CheckBoxAddForm } from 'components/Tasks/TasksPage.styled';
 
 import { requestAllTasks } from 'redux/auth/authOperation';
+import { useTranslation } from 'react-i18next';
 
 const AddTaskSection = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [completed, setCompleted] = useState(false);
+  const { t } = useTranslation();
 
   const currentUserUid = useSelector(selectCurrentUserUid);
 
@@ -57,10 +56,10 @@ const AddTaskSection = () => {
   };
   return (
     <Section>
-      <AddTitle>Add your task</AddTitle>
+      <AddTitle>{t('addTask.mainTitle')}</AddTitle>
       <AddForm onSubmit={handleCreateTask}>
         <LabelBox>
-          Title
+        {t('addTask.title')}
           <TextArea
             type="text"
             name="title"
@@ -68,7 +67,7 @@ const AddTaskSection = () => {
           />
         </LabelBox>
         <LabelBox>
-          Description
+        {t('addTask.description')}
           <TextArea
             rows="8"
             type="text"
@@ -86,10 +85,9 @@ const AddTaskSection = () => {
               onChange={e => setCompleted(e.target.checked)}
             />
             <label htmlFor="completed"></label>
-            <CheckName>Completed</CheckName>
-          </CheckBoxAddForm>
-
-          <AddBtn type="submit">Add task</AddBtn>
+            <CheckName>{t('addTask.completed')}</CheckName>
+           </CheckBoxAddForm>
+          <AddBtn type="submit">{t('addTask.button')}</AddBtn>
         </Check>
       </AddForm>
     </Section>

@@ -17,6 +17,7 @@ import { selectTheme } from 'redux/global/selectors';
 import { onAuthStateChanged } from 'firebase/auth';
 import { setCurrentUser } from 'redux/auth/authSlice';
 import { auth } from '../firebase';
+import ProfilePage from 'pages/ProfilePage';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 // const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -64,6 +65,14 @@ export function App() {
             element={
               <AuthRoute>
                 <CreateTaskPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <AuthRoute>
+                <ProfilePage />
               </AuthRoute>
             }
           />

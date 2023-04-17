@@ -17,7 +17,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/authOperation';
-import useAuth from 'hooks/useAuth';
 import { Mobile, Default } from 'components/Media/Media';
 import { BsList, BsX, BsBoxArrowRight } from 'react-icons/bs';
 import { TbLayoutGrid, TbLayoutGridAdd } from 'react-icons/tb';
@@ -74,23 +73,23 @@ export const Header = () => {
           <MenuWrapper style={hideOrShow}>
             <MobileList>
               <li>
-                <MobileNavLink to="/" onClick={handleMenu}>
-                {t('header.profile')}
+                <MobileNavLink to="/profile" onClick={handleMenu}>
+                  {t('header.profile')}
                 </MobileNavLink>
               </li>
               <li>
                 <MobileNavLink to="/" onClick={handleMenu}>
-                {t('header.activeTasks')}
+                  {t('header.activeTasks')}
                 </MobileNavLink>
               </li>
               <li>
                 <MobileNavLink to="/add" onClick={handleMenu}>
-                {t('header.createTask')}
+                  {t('header.createTask')}
                 </MobileNavLink>
               </li>
               <li>
                 <button type="button" onClick={handleLogout}>
-                {t('header.exit')}
+                  {t('header.exit')}
                 </button>
               </li>
             </MobileList>

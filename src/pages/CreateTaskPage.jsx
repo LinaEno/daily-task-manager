@@ -3,6 +3,7 @@ import AddTaskSection from 'components/AddTaskSection/AddTaskSection';
 import Aside from 'components/Aside/Aside';
 import CompletedTaskSection from 'components/CompletedTaskSection/CompletedTaskSection';
 import { Header } from 'components/Header/Header';
+import { Default } from 'components/Media/Media';
 import { Container } from 'components/Tasks/TasksPage.styled';
 
 const CreateTaskPage = () => {
@@ -15,7 +16,9 @@ const CreateTaskPage = () => {
           <CompletedTaskSection />
         </Container>
       </main>
-      <Aside />
+      <Default>
+        <Aside />
+      </Default>
     </>
   );
 };

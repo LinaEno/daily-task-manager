@@ -23,7 +23,9 @@ const HomePage = () => {
       <>
         <Header />
         <TasksPage />
-        <Aside />
+        <Default>
+          <Aside />
+        </Default>
       </>
       {/* {currentUser ? (
         <>

@@ -124,7 +124,7 @@ export const Btn = styled.button`
 `;
 
 export const WrapperTitle = styled.div`
-  width: 90%;
+  min-width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;

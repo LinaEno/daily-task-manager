@@ -1,19 +1,13 @@
 import {
   CheckBox,
-  CloseButton,
   IconClose,
   Title,
   TitleDesk,
-  WrapperButton,
   WrapperTitle,
-  SectionCompleted,
   Section,
   TitleTask,
-  WrapperCompl,
-  Wrapper,
   Btn,
   WrapperCompleted,
-  CheckBoxAddForm,
 } from 'components/Tasks/TasksPage.styled';
 
 import { useEffect } from 'react';
@@ -22,7 +16,6 @@ import {
   selectCompletedTasks,
   selectCurrentUserUid,
 } from 'redux/auth/authSelectors';
-import { AddTitle } from 'components/AddTaskSection/CreateTaskPage.styled';
 import { deleteTasks, requestAllTasks } from 'redux/auth/authOperation';
 import { useTranslation } from 'react-i18next';
 

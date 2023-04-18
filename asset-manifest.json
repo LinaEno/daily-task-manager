@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/daily-task-manager/static/css/main.eab11e58.css",
-    "main.js": "/daily-task-manager/static/js/main.103ab2c4.js",
+    "main.js": "/daily-task-manager/static/js/main.118911f1.js",
     "static/js/330.70652be5.chunk.js": "/daily-task-manager/static/js/330.70652be5.chunk.js",
-    "static/js/897.def49fb9.chunk.js": "/daily-task-manager/static/js/897.def49fb9.chunk.js",
+    "static/js/897.06846f09.chunk.js": "/daily-task-manager/static/js/897.06846f09.chunk.js",
     "static/css/241.f312bbe6.chunk.css": "/daily-task-manager/static/css/241.f312bbe6.chunk.css",
     "static/js/241.d4c6f335.chunk.js": "/daily-task-manager/static/js/241.d4c6f335.chunk.js",
     "static/js/828.800a20ea.chunk.js": "/daily-task-manager/static/js/828.800a20ea.chunk.js",
@@ -19,15 +19,15 @@
     "index.html": "/daily-task-manager/index.html",
     "static/media/close.svg": "/daily-task-manager/static/media/close.7f5e241076aa8c68c0f01b4cbe98d66f.svg",
     "main.eab11e58.css.map": "/daily-task-manager/static/css/main.eab11e58.css.map",
-    "main.103ab2c4.js.map": "/daily-task-manager/static/js/main.103ab2c4.js.map",
+    "main.118911f1.js.map": "/daily-task-manager/static/js/main.118911f1.js.map",
     "330.70652be5.chunk.js.map": "/daily-task-manager/static/js/330.70652be5.chunk.js.map",
-    "897.def49fb9.chunk.js.map": "/daily-task-manager/static/js/897.def49fb9.chunk.js.map",
+    "897.06846f09.chunk.js.map": "/daily-task-manager/static/js/897.06846f09.chunk.js.map",
     "241.f312bbe6.chunk.css.map": "/daily-task-manager/static/css/241.f312bbe6.chunk.css.map",
     "241.d4c6f335.chunk.js.map": "/daily-task-manager/static/js/241.d4c6f335.chunk.js.map",
     "828.800a20ea.chunk.js.map": "/daily-task-manager/static/js/828.800a20ea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eab11e58.css",
-    "static/js/main.103ab2c4.js"
+    "static/js/main.118911f1.js"
   ]
 }

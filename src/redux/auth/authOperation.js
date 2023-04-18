@@ -4,12 +4,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from '@firebase/auth';
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  uploadBytes,
-} from '@firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
 import {
   doc,
   setDoc,
@@ -17,7 +12,6 @@ import {
   collection,
   getDocs,
   deleteDoc,
-  getDoc,
 } from '@firebase/firestore';
 import { auth, db, storage } from '../../firebase';
 

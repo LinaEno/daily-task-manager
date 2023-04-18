@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUserUid } from 'redux/auth/authSelectors';
 
-import { CheckBox, CheckBoxAddForm } from 'components/Tasks/TasksPage.styled';
+import { CheckBoxAddForm } from 'components/Tasks/TasksPage.styled';
 
 import { requestAllTasks } from 'redux/auth/authOperation';
 import { useTranslation } from 'react-i18next';

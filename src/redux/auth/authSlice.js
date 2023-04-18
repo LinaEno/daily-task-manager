@@ -56,9 +56,13 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(logout.pending, state => {
+        state.loading = true;
+      })
       .addCase(logout.fulfilled, state => {
         state.currentUserUid = null;
         state.currentUser = null;
+        state.loading = false;
       })
       .addCase(requestAllTasks.pending, state => {
         state.error = null;

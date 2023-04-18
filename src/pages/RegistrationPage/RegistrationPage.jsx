@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { createAccount } from 'redux/auth/authOperation';
@@ -36,19 +36,19 @@ export function RegistrationPage() {
 
   const [mousePos, setMousePos] = useState({});
 
-  const moonX = -mousePos.x * 5;
-  const moonY = -mousePos.y * 8;
+  const moonX = useMemo(() => -mousePos.x * 5, [mousePos.x]);
+  const moonY = useMemo(() => -mousePos.y * 8, [mousePos.y]);
 
-  const cloud1Y = mousePos.y * 2;
+  const cloud1Y = useMemo(() => mousePos.y * 2, [mousePos.y]);
 
-  const cloud2Y = -mousePos.y * 2;
+  const cloud2Y = -cloud1Y;
 
-  const cloud3X = mousePos.x * 15;
+  const cloud3X = useMemo(() => mousePos.x * 15, [mousePos.x]);
 
-  const balloon1Y = mousePos.y * 8;
+  const balloon1Y = useMemo(() => mousePos.y * 8, [mousePos.y]);
 
-  const balloon2X = -mousePos.x * 2;
-  const balloon2Y = mousePos.y * 2;
+  const balloon2X = useMemo(() => -mousePos.x * 2, [mousePos.x]);
+  const balloon2Y = cloud1Y;
 
   useEffect(() => {
     const handleMouseMove = event => {

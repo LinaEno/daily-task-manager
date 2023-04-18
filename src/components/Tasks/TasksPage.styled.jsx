@@ -23,6 +23,23 @@ export const Section = styled.section`
   border-radius: 20px;
   padding: 20px;
   margin: 0 auto;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  max-height: 750px;
+  &:first-child {
+    margin-top: 30px;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+  }
 `;
 
 export const CheckBox = styled.div`
@@ -167,10 +184,11 @@ export const TitleMain = styled.h2`
 export const TitleTask = styled.h2`
   font-size: 24px;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #393d54;
+  position: sticky;
+  top: 5px;
 `;
-
 export const CloseButton = styled.button`
   align-items: center;
   justify-content: center;

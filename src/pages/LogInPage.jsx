@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { login } from 'redux/auth/authOperation';
@@ -27,19 +27,19 @@ export default function LoginPage() {
 
   const [mousePos, setMousePos] = useState({});
 
-  const sunX = mousePos.x * 3;
-  const sunY = mousePos.y * 5;
+  const sunX = useMemo(() => mousePos.x * 3, [mousePos.x]);
+  const sunY = useMemo(() => mousePos.y * 5, [mousePos.y]);
 
-  const cloud1Y = mousePos.y * 5;
+  const cloud1Y = sunY;
 
-  const cloud2X = mousePos.x * 20;
-  const cloud2Y = -mousePos.y * 5;
+  const cloud2X = useMemo(() => mousePos.x * 20, [mousePos.x]);
+  const cloud2Y = -sunY;
 
-  const balloon1X = -mousePos.x * 4;
-  const balloon1Y = -mousePos.y * 20;
+  const balloon1X = useMemo(() => -mousePos.x * 4, [mousePos.x]);
+  const balloon1Y = useMemo(() => -mousePos.y * 20, [mousePos.y]);
 
-  const balloon2X = mousePos.x * 8;
-  const balloon2Y = mousePos.y * 30;
+  const balloon2X = useMemo(() => mousePos.x * 8, [mousePos.x]);
+  const balloon2Y = useMemo(() => mousePos.y * 30, [mousePos.y]);
 
   useEffect(() => {
     const handleMouseMove = event => {

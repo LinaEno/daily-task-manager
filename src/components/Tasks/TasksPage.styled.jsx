@@ -124,16 +124,20 @@ export const Btn = styled.button`
 `;
 
 export const WrapperTitle = styled.div`
-  width: 90%;
+  min-width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+  }
 `;
 
 export const WrapperButton = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;

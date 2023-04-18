@@ -32,6 +32,16 @@ export const Img = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 140px;
+    height: 140px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 export const Title = styled.p`

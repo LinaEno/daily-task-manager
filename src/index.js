@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
-          <BrowserRouter>
+          <BrowserRouter basename="/daily-task-manager/">
             <App />
           </BrowserRouter>
         </Provider>
@@ -22,4 +22,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ThemeProvider>
   </React.StrictMode>
 );
-// basename="/daily-task-manager/"
+

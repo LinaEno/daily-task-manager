@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/daily-task-manager/static/css/main.eab11e58.css",
-    "main.js": "/daily-task-manager/static/js/main.9fb6a713.js",
+    "main.js": "/daily-task-manager/static/js/main.13242933.js",
     "static/js/330.70652be5.chunk.js": "/daily-task-manager/static/js/330.70652be5.chunk.js",
     "static/js/897.06846f09.chunk.js": "/daily-task-manager/static/js/897.06846f09.chunk.js",
     "static/css/241.f312bbe6.chunk.css": "/daily-task-manager/static/css/241.f312bbe6.chunk.css",
@@ -15,11 +15,12 @@
     "static/media/cloud1-min.png": "/daily-task-manager/static/media/cloud1-min.e8cb9affba4fa1608cb8.png",
     "static/media/balloon2-min.png": "/daily-task-manager/static/media/balloon2-min.44990dc59eb7d2ced7c6.png",
     "static/media/moon-min.png": "/daily-task-manager/static/media/moon-min.587772e904bdea6a28f7.png",
+    "static/media/default-avatar.png": "/daily-task-manager/static/media/default-avatar.630fb0190b0fa104f8d6.png",
     "static/media/sun-min.png": "/daily-task-manager/static/media/sun-min.527c3865f365b0027083.png",
     "index.html": "/daily-task-manager/index.html",
     "static/media/close.svg": "/daily-task-manager/static/media/close.7f5e241076aa8c68c0f01b4cbe98d66f.svg",
     "main.eab11e58.css.map": "/daily-task-manager/static/css/main.eab11e58.css.map",
-    "main.9fb6a713.js.map": "/daily-task-manager/static/js/main.9fb6a713.js.map",
+    "main.13242933.js.map": "/daily-task-manager/static/js/main.13242933.js.map",
     "330.70652be5.chunk.js.map": "/daily-task-manager/static/js/330.70652be5.chunk.js.map",
     "897.06846f09.chunk.js.map": "/daily-task-manager/static/js/897.06846f09.chunk.js.map",
     "241.f312bbe6.chunk.css.map": "/daily-task-manager/static/css/241.f312bbe6.chunk.css.map",
@@ -28,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.eab11e58.css",
-    "static/js/main.9fb6a713.js"
+    "static/js/main.13242933.js"
   ]
 }

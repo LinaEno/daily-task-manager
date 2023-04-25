@@ -15,6 +15,8 @@ import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import ModalEditUserProfile from '../ModalEditUserProfile/ModalEditUserProfile';
 import { useTranslation } from 'react-i18next';
 
+import defaultAvatar from '../../img/default-avatar.png';
+
 const UserProfile = () => {
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
@@ -31,7 +33,11 @@ const UserProfile = () => {
           </button>
         </TopBox>
         <BottomBox>
-          <Img src={currentUser?.photoURL} alt="user" width={50} />
+          <Img
+            src={currentUser?.photoURL ? currentUser.photoURL : defaultAvatar}
+            alt="user"
+            width={50}
+          />
           <Signature>{currentUser?.displayName}</Signature>
         </BottomBox>
       </Box>
